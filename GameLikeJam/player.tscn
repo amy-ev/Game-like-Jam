@@ -20,3 +20,29 @@ shape = SubResource("ConvexPolygonShape3D_4flbx")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=269770132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+current = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D" unique_id=535865257]
+light_color = Color(0.9976048, 0.9364076, 0.82279116, 1)
+light_energy = 0.2
+light_indirect_energy = 5.0
+light_specular = 0.3
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+shadow_opacity = 0.5
+shadow_blur = 10.0
+spot_range = 50.0
+spot_attenuation = 1.5
+spot_angle = 79.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D" unique_id=877321203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+light_color = Color(0.96862745, 0.7490196, 0.27450982, 1)
+light_energy = 0.3
+light_indirect_energy = 10.0
+shadow_enabled = true
+shadow_normal_bias = 2.0
+shadow_opacity = 0.5
+shadow_blur = 10.0
+omni_range = 50.0

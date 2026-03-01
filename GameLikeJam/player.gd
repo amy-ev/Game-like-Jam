@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var CAMERA_CONTROLLER := $Camera3D
+@onready var LIGHT_CONTROLLER := $Camera3D/SpotLight3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -17,8 +18,7 @@ var _rotation_input : float
 var _tilt_input : float
 var _player_rotation : Vector3
 var _camera_rotation : Vector3
-
-
+var _light_rotation : Vector3
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -51,15 +51,19 @@ func _update_camera(delta):
 	_mouse_rotation.x += _tilt_input * delta
 	_mouse_rotation.x = clamp(_mouse_rotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
 	_mouse_rotation.y += _rotation_input * delta
-	
+
 	_player_rotation = Vector3(0.0,_mouse_rotation.y,0.0)
 	_camera_rotation = Vector3(_mouse_rotation.x,0.0,0.0)
+	_light_rotation = Vector3(_mouse_rotation.x,0.0,0.0)
 	
 	CAMERA_CONTROLLER.transform.basis = Basis.from_euler(_camera_rotation)
 	CAMERA_CONTROLLER.rotation.z = 0.0
 	
-	global_transform.basis = Basis.from_euler(_player_rotation)
+	LIGHT_CONTROLLER.transform.basis = Basis.from_euler(_light_rotation)
+	LIGHT_CONTROLLER.rotation.z = 0.0
 	
+	global_transform.basis = Basis.from_euler(_player_rotation)
+
 	# to stop constant spinning
 	_rotation_input = 0.0
 	_tilt_input = 0.0
