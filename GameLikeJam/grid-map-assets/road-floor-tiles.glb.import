@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dk08hv74o8raf"
-path="res://.godot/imported/stone-fence.glb-7ea19f1cf2d88f4e382a51f201dc7f27.scn"
+uid="uid://dhctl1fsubdx7"
+path="res://.godot/imported/road-floor-tiles.glb-58e2f6399129e308eaccdd5069289040.scn"
 
 [deps]
 
-source_file="res://grid-map-assets/stone-fence.glb"
-dest_files=["res://.godot/imported/stone-fence.glb-7ea19f1cf2d88f4e382a51f201dc7f27.scn"]
+source_file="res://grid-map-assets/road-floor-tiles.glb"
+dest_files=["res://.godot/imported/road-floor-tiles.glb-58e2f6399129e308eaccdd5069289040.scn"]
 
 [params]
 

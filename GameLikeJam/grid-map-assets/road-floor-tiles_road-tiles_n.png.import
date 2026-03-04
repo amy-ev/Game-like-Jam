@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyph3wlxfuybt"
-path.s3tc="res://.godot/imported/stone-post_stone-wall_n.png-20a395e1a726a06eb0db955bf7504f00.s3tc.ctex"
+uid="uid://br5x4goxo7t4g"
+path.s3tc="res://.godot/imported/road-floor-tiles_road-tiles_n.png-8ceda5bd18f7a3cf53beda1fc34f5dac.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "bae6876c8e43377cab1836a1ed34b879"
+"md5": "b56316ce202c96daade5b35a636b67b2"
 }
 
 [deps]
 
-source_file="res://grid-map-assets/stone-post_stone-wall_n.png"
-dest_files=["res://.godot/imported/stone-post_stone-wall_n.png-20a395e1a726a06eb0db955bf7504f00.s3tc.ctex"]
+source_file="res://grid-map-assets/road-floor-tiles_road-tiles_n.png"
+dest_files=["res://.godot/imported/road-floor-tiles_road-tiles_n.png-8ceda5bd18f7a3cf53beda1fc34f5dac.s3tc.ctex"]
 
 [params]
 
@@ -30,7 +30,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://stone-post_stone-wall_n.png"
+roughness/src_normal="res://grid-map-assets/road-floor-tiles_road-tiles_n.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
