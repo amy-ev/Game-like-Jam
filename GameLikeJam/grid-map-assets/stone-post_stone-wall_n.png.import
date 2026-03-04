@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db662bi5f5vov"
-path.s3tc="res://.godot/imported/grassleaf.png-f45327fb7cf50fb8ca049101c55f1fac.s3tc.ctex"
+uid="uid://dyph3wlxfuybt"
+path.s3tc="res://.godot/imported/stone-post_stone-wall_n.png-20a395e1a726a06eb0db955bf7504f00.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "bae6876c8e43377cab1836a1ed34b879"
+}
 
 [deps]
 
-source_file="res://grassleaf.png"
-dest_files=["res://.godot/imported/grassleaf.png-f45327fb7cf50fb8ca049101c55f1fac.s3tc.ctex"]
+source_file="res://grid-map-assets/stone-post_stone-wall_n.png"
+dest_files=["res://.godot/imported/stone-post_stone-wall_n.png-20a395e1a726a06eb0db955bf7504f00.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://stone-post_stone-wall_n.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
