@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dhctl1fsubdx7"
-path="res://.godot/imported/road-floor-tiles.glb-58e2f6399129e308eaccdd5069289040.scn"
+uid="uid://bxccaqpqqwrt6"
+path="res://.godot/imported/32x32-floor-tiles.glb-1a9c8ed89aab263517b204af094f9df9.scn"
 
 [deps]
 
-source_file="res://grid-map-assets/road-floor-tiles.glb"
-dest_files=["res://.godot/imported/road-floor-tiles.glb-58e2f6399129e308eaccdd5069289040.scn"]
+source_file="res://grid-map-assets/32x32-floor-tiles.glb"
+dest_files=["res://.godot/imported/32x32-floor-tiles.glb-1a9c8ed89aab263517b204af094f9df9.scn"]
 
 [params]
 

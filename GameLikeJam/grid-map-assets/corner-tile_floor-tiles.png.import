@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvl15auboevoe"
-path.s3tc="res://.godot/imported/road-floor-tiles_road-tiles.png-27b7d3aebff942c1cf6275c638a10e2b.s3tc.ctex"
+uid="uid://bpa258u05onas"
+path.s3tc="res://.godot/imported/corner-tile_floor-tiles.png-e86348e0023c175eb681cc7ac14dc453.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "43d2659b6293b9b354b29ec32169093b"
+"md5": "d1f98b9d9cfa2eec1d6412664d92c3fc"
 }
 
 [deps]
 
-source_file="res://grid-map-assets/road-floor-tiles_road-tiles.png"
-dest_files=["res://.godot/imported/road-floor-tiles_road-tiles.png-27b7d3aebff942c1cf6275c638a10e2b.s3tc.ctex"]
+source_file="res://grid-map-assets/corner-tile_floor-tiles.png"
+dest_files=["res://.godot/imported/corner-tile_floor-tiles.png-e86348e0023c175eb681cc7ac14dc453.s3tc.ctex"]
 
 [params]
 
