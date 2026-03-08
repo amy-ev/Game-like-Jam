@@ -17,7 +17,7 @@ uniform float top_scale : hint_range(0.0, 0.1, 0.001) = 0.005;
 uniform float top_threshold : hint_range(0.0, 1.0, 0.001) = 0.6;
 uniform sampler2D top_noise; 
 
-uniform float area = 50.0;
+uniform float area = 9.6;
 
 varying float instance_id;
 varying float leaf_seed;

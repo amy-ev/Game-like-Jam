@@ -3,14 +3,14 @@ extends CharacterBody3D
 @onready var CAMERA_CONTROLLER := $Camera3D
 @onready var LIGHT_CONTROLLER := $Camera3D/SpotLight3D
 
-const SPEED = 5.0
+const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 const TURN_SPEED = 0.05
 
 # maybe change to be adjustable
 const MOUSE_SENSITIVITY := 0.5
 
-const TILT_LOWER_LIMIT := -1.0
+const TILT_LOWER_LIMIT := -2.0
 const TILT_UPPER_LIMIT := 1.0
 
 var _mouse_rotation : Vector3
@@ -25,8 +25,8 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	#if not is_on_floor():
+		#velocity += get_gravity() * delta
 
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -36,7 +36,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		
+	if Input.is_action_pressed("jump"):
+		velocity.y = JUMP_VELOCITY
+	elif Input.is_action_pressed("crouch"):
+		velocity.y = -JUMP_VELOCITY
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED)
 	move_and_slide()
 	_update_camera(delta)
 
