@@ -26,7 +26,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if detected and !opened:
-		if event.is_action_pressed(\"crouch\"):
+		if event.is_action_pressed(\"interact\"):
 			animation = animation_dict.get(direction,\"RESET\")
 			get_node(\"AnimationPlayer\").play(animation)
 			opened = true

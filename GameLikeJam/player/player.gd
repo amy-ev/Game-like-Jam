@@ -10,7 +10,7 @@ const TURN_SPEED = 0.05
 # maybe change to be adjustable
 const MOUSE_SENSITIVITY := 0.5
 
-const TILT_LOWER_LIMIT := -2.0
+const TILT_LOWER_LIMIT := -1.0
 const TILT_UPPER_LIMIT := 1.0
 
 var _mouse_rotation : Vector3
