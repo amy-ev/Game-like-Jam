@@ -9,6 +9,38 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wll1r"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgo0l"]
+atlas = ExtResource("2_uj22v")
+region = Rect2(0, 0, 336, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj22v"]
+atlas = ExtResource("2_uj22v")
+region = Rect2(336, 0, 336, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl0n6"]
+atlas = ExtResource("2_uj22v")
+region = Rect2(672, 0, 336, 336)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pn8sv"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_lgo0l")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_uj22v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl0n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uj22v")
+}],
+"loop": true,
+"name": &"look-around",
+"speed": 2.0
+}]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wcm0j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t4hft"]
@@ -38,7 +70,7 @@ layout_mode = 2
 theme_override_constants/separation = 3
 
 [node name="level" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1712187998]
-custom_minimum_size = Vector2(28, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nl0n6")
 
@@ -49,7 +81,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="score" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1032070076]
-custom_minimum_size = Vector2(59, 0)
+custom_minimum_size = Vector2(57, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pn8sv")
 
@@ -70,14 +102,21 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="avatar" type="TextureRect" parent="panel/HBoxContainer" unique_id=1331405842]
-clip_contents = true
+[node name="avatar" type="PanelContainer" parent="panel/HBoxContainer" unique_id=720592192]
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
-texture = ExtResource("2_uj22v")
-expand_mode = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wll1r")
+
+[node name="avatar" type="AnimatedSprite2D" parent="panel/HBoxContainer/avatar" unique_id=1851603535]
+position = Vector2(24, 24)
+scale = Vector2(0.143, 0.143)
+sprite_frames = SubResource("SpriteFrames_pn8sv")
+animation = &"look-around"
+autoplay = "look-around"
+frame_progress = 0.56236655
 
 [node name="health" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1384828062]
-custom_minimum_size = Vector2(56, 0)
+custom_minimum_size = Vector2(58, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wcm0j")
 
@@ -88,7 +127,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="goal" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1225673500]
-custom_minimum_size = Vector2(66, 0)
+custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_t4hft")
 
