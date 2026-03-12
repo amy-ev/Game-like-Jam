@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2xqvmo16omsa"
+uid="uid://dlou8xrjgd4p6"
 path.s3tc="res://.godot/imported/8x16-fence-tiles_fence-tiles_n.png-fa85874ddb8739de2f6c07b402a37cdb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f067302ce13a62ce282cf4438b4e7a14"
+"md5": "a512570aa9167b7050491be5aaf6f099"
 }
 
 [deps]

@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj8b6t3g6yemy"
+uid="uid://clpfjgt6wsn1j"
 path.s3tc="res://.godot/imported/32x32-floor-tiles_floor-tiles_n.png-b5deffb3f85aba76acfda8ab29aaf7be.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e74dbd44d4936736969fbf3d09ea32ee"
+"md5": "3fb504e77e94870dbef29e3f532bea47"
 }
 
 [deps]

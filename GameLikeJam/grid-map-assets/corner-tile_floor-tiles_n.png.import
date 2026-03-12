@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjp0eexvootv7"
+uid="uid://t2ofvpp54c2h"
 path.s3tc="res://.godot/imported/corner-tile_floor-tiles_n.png-23413bd228838363eedf8b99f0c1f9e7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e74dbd44d4936736969fbf3d09ea32ee"
+"md5": "2ecc0227b9f35aab8aa023ddd96f02f9"
 }
 
 [deps]

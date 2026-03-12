@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du4myy1ifnsks"
+uid="uid://cxdstbyfyqmfd"
 path.s3tc="res://.godot/imported/door-right_fence-gate_n.png-7814fe5c2dafbad00e9db5bfdcd2f8bc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b620f8952c15caa240f9c16ad0a7bb30"
+"md5": "5dc8b65eb2f4528164058f6d0ac55a4f"
 }
 
 [deps]
