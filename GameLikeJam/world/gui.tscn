@@ -45,9 +45,22 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t4hft"]
 
-[node name="gui" type="NinePatchRect" unique_id=828133794]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lgo0l"]
+load_path = "res://.godot/imported/ui-panel.png-be8c231798c36cf216af24d79fa4e4b5.ctex"
+
+[node name="Control" type="Control" unique_id=1432975076]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="gui" type="NinePatchRect" parent="." unique_id=828133794]
 clip_contents = true
 custom_minimum_size = Vector2(320, 64)
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -55,8 +68,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_lgo0l")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
-[node name="panel" type="MarginContainer" parent="." unique_id=2014012353]
+[node name="panel" type="MarginContainer" parent="gui" unique_id=2014012353]
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 64.0
@@ -65,49 +82,49 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="panel" unique_id=1982935132]
+[node name="HBoxContainer" type="HBoxContainer" parent="gui/panel" unique_id=1982935132]
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="level" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1712187998]
+[node name="level" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1712187998]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nl0n6")
 
-[node name="Label" type="Label" parent="panel/HBoxContainer/level" unique_id=314215864]
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/level" unique_id=314215864]
 layout_mode = 2
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="score" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1032070076]
+[node name="score" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1032070076]
 custom_minimum_size = Vector2(57, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pn8sv")
 
-[node name="Label" type="Label" parent="panel/HBoxContainer/score" unique_id=1364979807]
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/score" unique_id=1364979807]
 layout_mode = 2
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lives" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1239573808]
+[node name="lives" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1239573808]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wll1r")
 
-[node name="Label" type="Label" parent="panel/HBoxContainer/lives" unique_id=788625110]
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/lives" unique_id=788625110]
 layout_mode = 2
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="avatar" type="PanelContainer" parent="panel/HBoxContainer" unique_id=720592192]
+[node name="avatar" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=720592192]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wll1r")
 
-[node name="avatar" type="AnimatedSprite2D" parent="panel/HBoxContainer/avatar" unique_id=1851603535]
+[node name="avatar" type="AnimatedSprite2D" parent="gui/panel/HBoxContainer/avatar" unique_id=1851603535]
 position = Vector2(24, 24)
 scale = Vector2(0.143, 0.143)
 sprite_frames = SubResource("SpriteFrames_pn8sv")
@@ -115,24 +132,37 @@ animation = &"look-around"
 autoplay = "look-around"
 frame_progress = 0.56236655
 
-[node name="health" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1384828062]
+[node name="health" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1384828062]
 custom_minimum_size = Vector2(58, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wcm0j")
 
-[node name="Label" type="Label" parent="panel/HBoxContainer/health" unique_id=1812340044]
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/health" unique_id=1812340044]
 layout_mode = 2
 text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="goal" type="PanelContainer" parent="panel/HBoxContainer" unique_id=1225673500]
+[node name="goal" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1225673500]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_t4hft")
 
-[node name="Label" type="Label" parent="panel/HBoxContainer/goal" unique_id=1806187093]
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/goal" unique_id=1806187093]
 layout_mode = 2
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="border" type="NinePatchRect" parent="." unique_id=1478763870]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+texture = SubResource("CompressedTexture2D_lgo0l")
+draw_center = false
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

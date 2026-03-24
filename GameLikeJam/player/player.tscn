@@ -10,6 +10,8 @@ height = 1.5
 height = 1.5
 
 [node name="player" type="CharacterBody3D" unique_id=1163194258 groups=["player"]]
+collision_layer = 2
+collision_mask = 13
 floor_stop_on_slope = false
 script = ExtResource("1_4flbx")
 
