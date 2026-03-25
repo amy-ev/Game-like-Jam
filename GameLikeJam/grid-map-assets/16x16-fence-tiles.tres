@@ -25,7 +25,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_tlml2"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_2yubm"]
 resource_name = "16x16-fence-tiles_Plane_008"
 _surfaces = [{
 "aabb": AABB(-0.8, -0.80000013, -4, 1.6, 1.6000001, 4),
@@ -52,18 +52,19 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_n82ms"]
+[sub_resource type="ImageTexture" id="ImageTexture_tlml2"]
 image = SubResource("Image_2yubm")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_37cv7"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rhljx"]
 data = PackedVector3Array(-0.8, 0.79999995, -3.4969112e-08, 0.8, 0.7999999, -4, -0.8, 0.7999999, -4, -0.8, 0.79999995, -3.4969112e-08, 0.8, 0.79999995, -3.4969112e-08, 0.8, 0.7999999, -4, -0.8, -0.8, -3.4969112e-08, 0.8, -0.80000013, -4, 0.8, -0.8, -3.4969112e-08, -0.8, -0.8, -3.4969112e-08, -0.8, -0.80000013, -4, 0.8, -0.80000013, -4, -0.8, 0.7999999, -4, -0.8, -0.8, -3.4969112e-08, -0.8, 0.79999995, -3.4969112e-08, -0.8, 0.7999999, -4, -0.8, -0.80000013, -4, -0.8, -0.8, -3.4969112e-08, 0.8, 0.7999999, -4, -0.8, -0.80000013, -4, -0.8, 0.7999999, -4, 0.8, 0.7999999, -4, 0.8, -0.80000013, -4, -0.8, -0.80000013, -4, -0.8, 0.79999995, -3.4969112e-08, 0.8, -0.8, -3.4969112e-08, 0.8, 0.79999995, -3.4969112e-08, -0.8, 0.79999995, -3.4969112e-08, -0.8, -0.8, -3.4969112e-08, 0.8, -0.8, -3.4969112e-08, 0.8, 0.79999995, -3.4969112e-08, 0.8, -0.80000013, -4, 0.8, 0.7999999, -4, 0.8, 0.79999995, -3.4969112e-08, 0.8, -0.8, -3.4969112e-08, 0.8, -0.80000013, -4)
+backface_collision = true
 
 [resource]
 item/0/name = "stone-post"
-item/0/mesh = SubResource("ArrayMesh_tlml2")
+item/0/mesh = SubResource("ArrayMesh_2yubm")
 item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/0/mesh_cast_shadow = 1
-item/0/shapes = [SubResource("ConcavePolygonShape3D_37cv7"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/0/shapes = [SubResource("ConcavePolygonShape3D_rhljx"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/0/navigation_layers = 1
-item/0/preview = SubResource("ImageTexture_n82ms")
+item/0/preview = SubResource("ImageTexture_tlml2")
