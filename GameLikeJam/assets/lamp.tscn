@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b62bb7d7dkwoe"]
+
+[ext_resource type="PackedScene" uid="uid://c2dx6kepcyeml" path="res://assets/lamp.glb" id="1_edji2"]
+
+[node name="lamp" unique_id=1542482093 instance=ExtResource("1_edji2")]
+
+[node name="lamp" parent="." index="0" unique_id=1834812744]
+transform = Transform3D(3.5762787e-07, 0.99999994, 0, -0.99999994, 3.5762787e-07, 0, 0, 0, 1, 0, 1, 0.8)
+
+[node name="OmniLight3D" type="SpotLight3D" parent="." index="1" unique_id=1862819479]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.011434555, 11.301451, -0.04937172)
+light_color = Color(1, 0.6588334, 0.110000014, 1)
+light_energy = 2.5
+light_size = 0.5
+spot_range = 14.963666
+spot_angle = 28.89078
