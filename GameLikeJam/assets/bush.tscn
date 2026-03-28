@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://co3hvgnb3usqs"]
+
+[ext_resource type="PackedScene" uid="uid://b83p71cerga52" path="res://assets/bush.glb" id="1_brejn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plhp5"]
+size = Vector3(2.2, 2.8, 3.2)
+
+[node name="bush" unique_id=648987275 instance=ExtResource("1_brejn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bush" parent_id_path=PackedInt32Array(394996083) index="0" unique_id=285636184]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bush/StaticBody3D" index="0" unique_id=2045697563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39999998, 0.0063476563)
+shape = SubResource("BoxShape3D_plhp5")

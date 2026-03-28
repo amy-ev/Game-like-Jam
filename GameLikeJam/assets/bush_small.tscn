@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b1rjnq6q6juo2"]
+
+[ext_resource type="PackedScene" uid="uid://djlwnekrl21m0" path="res://assets/bush-small.glb" id="1_d72mp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um1yk"]
+size = Vector3(2.2, 2.322, 2.4)
+
+[node name="bush-small" unique_id=429678788 instance=ExtResource("1_d72mp")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bush-small" parent_id_path=PackedInt32Array(817543345) index="0" unique_id=948974592]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bush-small/StaticBody3D" index="0" unique_id=412010045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14999998, -0.14922917)
+shape = SubResource("BoxShape3D_um1yk")
