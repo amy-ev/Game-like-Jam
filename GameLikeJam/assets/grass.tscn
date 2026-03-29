@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bwf2krn0bd0c2"]
+
+[ext_resource type="Texture2D" uid="uid://gudtaafj8qix" path="res://assets/grass/grass_0.png" id="1_skc67"]
+
+[sub_resource type="GDScript" id="GDScript_su33e"]
+script/source = "extends Sprite3D
+
+
+func _ready() -> void:
+	var i = randi_range(0,5)
+	var path_name = str(\"res://assets/grass/grass_\",i,\".png\")
+	set_texture(load(path_name))
+"
+
+[node name="grass" type="Sprite3D" unique_id=1783652069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_skc67")
+script = SubResource("GDScript_su33e")
