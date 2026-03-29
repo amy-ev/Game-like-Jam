@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b62bb7d7dkwoe"]
 
 [ext_resource type="PackedScene" uid="uid://c2dx6kepcyeml" path="res://assets/lamp.glb" id="1_edji2"]
+[ext_resource type="Texture2D" uid="uid://dwx6e1d0ru02f" path="res://assets/bush_bush.png" id="2_dhgu1"]
 
 [node name="lamp" unique_id=1542482093 instance=ExtResource("1_edji2")]
 
@@ -17,3 +18,10 @@ light_size = 0.5
 spot_range = 14.11761
 spot_attenuation = 0.0
 spot_angle = 34.317432
+
+[node name="Sprite3D" type="Sprite3D" parent="OmniLight3D" index="0" unique_id=657201]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.023344547, -0.0021845698, -0.43101788)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("2_dhgu1")
