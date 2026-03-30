@@ -12,7 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://co3hvgnb3usqs" path="res://assets/bush.tscn" id="8_k5tyw"]
 [ext_resource type="PackedScene" uid="uid://b1rjnq6q6juo2" path="res://assets/bush_small.tscn" id="9_15uf8"]
 [ext_resource type="MeshLibrary" uid="uid://bypyrxdtvmfoh" path="res://grid-map-assets/corner-tile.tres" id="12_a3lwk"]
+[ext_resource type="PackedScene" uid="uid://bwf2krn0bd0c2" path="res://assets/grass.tscn" id="13_15uf8"]
 [ext_resource type="PackedScene" uid="uid://b62bb7d7dkwoe" path="res://assets/lamp.tscn" id="13_cch6v"]
+[ext_resource type="PackedScene" uid="uid://cw4isogr7un76" path="res://assets/bin.tscn" id="15_bjbpw"]
+[ext_resource type="PackedScene" uid="uid://81746d8636nn" path="res://assets/large_bin.tscn" id="16_kkawi"]
+[ext_resource type="PackedScene" uid="uid://3rbs7528kwdw" path="res://assets/trash.tscn" id="17_bjbpw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ppyta"]
 size = Vector2(51.2, 51.2)
@@ -151,8 +155,48 @@ transform = Transform3D(0.32662407, 0, -0.9451543, 0, 1, 0, 0.9451543, 0, 0.3266
 [node name="bush-small5" parent="foliage" unique_id=410385717 instance=ExtResource("9_15uf8")]
 transform = Transform3D(0.101282, 0, -0.9948578, 0, 1, 0, 0.9948578, 0, 0.101282, -7.397705, 0, -6.4356384)
 
-[node name="lamp" parent="." unique_id=1542482093 instance=ExtResource("13_cch6v")]
+[node name="grass" parent="foliage" unique_id=1783652069 instance=ExtResource("13_15uf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -21.260971)
+
+[node name="grass2" parent="foliage" unique_id=1403606889 instance=ExtResource("13_15uf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.50082, 0.2, -15.355144)
+
+[node name="grass3" parent="foliage" unique_id=536555584 instance=ExtResource("13_15uf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.346325, 0.2, -13.676648)
+
+[node name="grass4" parent="foliage" unique_id=864102579 instance=ExtResource("13_15uf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.69265, 0.2, -9.511481)
+
+[node name="grass5" parent="foliage" unique_id=726573943 instance=ExtResource("13_15uf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4298248, 0.2, -12.433316)
+
+[node name="grass6" parent="foliage" unique_id=1600157343 instance=ExtResource("13_15uf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.38623, 0.2, -21.260971)
+
+[node name="decor" type="Node3D" parent="." unique_id=1601260919]
+
+[node name="lamp" parent="decor" unique_id=1542482093 instance=ExtResource("13_cch6v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.458, 0.1, -7.979)
 
-[node name="lamp2" parent="." unique_id=590236359 instance=ExtResource("13_cch6v")]
+[node name="lamp2" parent="decor" unique_id=590236359 instance=ExtResource("13_cch6v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.632, 0.1, 22.886)
+
+[node name="bin" parent="decor" unique_id=1887605077 instance=ExtResource("15_bjbpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.66566, 0, 14.284691)
+
+[node name="large-bin" parent="decor" unique_id=628234486 instance=ExtResource("16_kkawi")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.9786606, 0, -21.38531)
+
+[node name="items" type="Node3D" parent="." unique_id=1198377861]
+
+[node name="trash" parent="items" unique_id=1571812383 instance=ExtResource("17_bjbpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.593231, 0, 16.822641)
+
+[node name="trash2" parent="items" unique_id=1258157116 instance=ExtResource("17_bjbpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.620268, 0, -4.0606365)
+
+[node name="trash3" parent="items" unique_id=668411598 instance=ExtResource("17_bjbpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.852966, 0, 12.689491)
+
+[node name="trash4" parent="items" unique_id=451931335 instance=ExtResource("17_bjbpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.349167, 0, -10.441637)

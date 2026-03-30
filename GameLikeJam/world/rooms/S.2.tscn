@@ -12,7 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://co3hvgnb3usqs" path="res://assets/bush.tscn" id="8_ql1ak"]
 [ext_resource type="PackedScene" uid="uid://b1rjnq6q6juo2" path="res://assets/bush_small.tscn" id="9_kntan"]
 [ext_resource type="PackedScene" uid="uid://b62bb7d7dkwoe" path="res://assets/lamp.tscn" id="10_6xdu0"]
+[ext_resource type="PackedScene" uid="uid://bwf2krn0bd0c2" path="res://assets/grass.tscn" id="11_kntan"]
 [ext_resource type="MeshLibrary" uid="uid://bypyrxdtvmfoh" path="res://grid-map-assets/corner-tile.tres" id="13_mlact"]
+[ext_resource type="PackedScene" uid="uid://81746d8636nn" path="res://assets/large_bin.tscn" id="14_taxs5"]
+[ext_resource type="PackedScene" uid="uid://3rbs7528kwdw" path="res://assets/trash.tscn" id="15_ql1ak"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ppyta"]
 size = Vector2(51.2, 51.2)
@@ -56,10 +59,18 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="fence" type="GridMap" parent="." unique_id=1498354186]
 mesh_library = ExtResource("2_6xdu0")
-cell_size = Vector3(1.6, 4, 1.6)
+cell_size = Vector3(1.6, 1.6, 1.6)
 cell_center_y = false
 data = {
 "cells": PackedInt32Array(65532, 4, 262144, 65534, 4, 262144, 0, 4, 262144, 2, 4, 262144, 4, 3, 1507328, 5, 2, 917504, 10, 2, 917504, 11, 2, 917505, 65533, 4, 917505, 65535, 4, 917505, 1, 4, 917505, 3, 4, 917505, 65522, 65529, 917504, 65523, 65529, 917505, 65524, 65529, 917504, 65525, 65529, 917505, 65526, 65529, 917504, 65527, 65528, 1245184, 65528, 65527, 262144, 65529, 65526, 1507328, 65522, 65522, 917504, 65523, 65522, 917505, 65524, 65522, 917504, 65525, 65522, 917505, 65526, 65522, 917505, 65527, 65522, 917504, 65528, 65522, 917504, 65529, 65523, 1245184)
+}
+
+[node name="fence-corner" type="GridMap" parent="." unique_id=58288133]
+mesh_library = ExtResource("4_shm1a")
+cell_size = Vector3(1.6, 4, 1.6)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(4, 4, 917504, 4, 2, 917504, 6, 2, 917504, 9, 2, 917504, 65529, 65527, 1245184, 65529, 65522, 1245184, 65527, 65527, 1245184, 65527, 65529, 1245184)
 }
 
 [node name="brick" type="GridMap" parent="." unique_id=72144070]
@@ -71,19 +82,30 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 6, 0)
 
-[node name="fence-corner" type="GridMap" parent="." unique_id=58288133]
-mesh_library = ExtResource("4_shm1a")
-cell_size = Vector3(1.6, 4, 1.6)
+[node name="road" type="GridMap" parent="." unique_id=829939733]
+mesh_library = ExtResource("1_kw2u1")
+cell_size = Vector3(1.6, 0.2, 1.6)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(4, 4, 917504, 4, 2, 917504, 6, 2, 917504, 9, 2, 917504, 65529, 65527, 1245184, 65529, 65522, 1245184, 65527, 65527, 1245184, 65527, 65529, 1245184)
+"cells": PackedInt32Array(65534, 65520, 1048582, 65534, 65521, 1048582, 65533, 65520, 655363, 2, 65520, 10, 2, 65521, 3, 2, 65522, 4, 2, 65523, 4, 2, 65524, 11, 2, 65525, 10, 2, 65526, 3, 65533, 65521, 655370, 65533, 65522, 655364, 65533, 65523, 655363, 65533, 65524, 655370, 65533, 65525, 655363, 65533, 65526, 655370, 65533, 65527, 655363, 65533, 65528, 655370, 65533, 65529, 655364, 2, 65527, 4, 2, 65528, 11, 2, 65529, 11, 2, 65530, 10, 2, 65531, 3, 65533, 65530, 655364, 65533, 65531, 655371, 65535, 65534, 1441795, 0, 65534, 1441802, 2, 65532, 4, 65533, 65532, 655371, 65534, 65533, 655368, 65535, 65533, 655366, 0, 65533, 655367, 1, 65533, 1441800, 1, 65532, 1441798, 0, 65532, 655365, 65535, 65532, 655365, 65535, 65531, 655365, 65535, 65530, 655365, 65535, 65529, 655365, 0, 65529, 655365, 0, 65530, 655365, 0, 65531, 655365, 0, 65528, 655365, 0, 65527, 1441793, 0, 65526, 1048576, 0, 65525, 655365, 0, 65524, 655365, 0, 65523, 655365, 0, 65522, 655365, 0, 65521, 655365, 0, 65520, 655365, 65535, 65526, 1048577, 65535, 65527, 1441793, 65535, 65528, 655365, 65535, 65520, 655365, 65535, 65521, 655365, 65535, 65522, 655365, 65535, 65523, 655365, 65535, 65524, 655365, 65535, 65525, 655365, 65534, 65522, 1048582, 65534, 65523, 1048582, 65534, 65524, 1048582, 65534, 65525, 655373, 65534, 65526, 1048578, 65534, 65527, 1048578, 65534, 65528, 655372, 65534, 65529, 1048583, 65534, 65530, 1048583, 65534, 65531, 1048582, 65534, 65532, 1048582, 1, 65531, 1441798, 1, 65530, 1441798, 1, 65529, 1441798, 1, 65528, 13, 1, 65527, 1441794, 1, 65526, 1441794, 1, 65525, 12, 1, 65524, 1441799, 1, 65523, 1441798, 1, 65522, 1441798, 1, 65520, 1441798, 1, 65521, 1441798, 65522, 65529, 1048579, 65528, 65522, 1441795, 65526, 65522, 1441795, 65522, 65522, 1441802, 65527, 65522, 1441802, 65525, 65522, 1441796, 65524, 65522, 1441796, 65523, 65522, 1441803, 65523, 65529, 1048586, 65524, 65529, 1048579, 65525, 65529, 1048580, 65526, 65529, 1048587, 65527, 65528, 655371, 65529, 65526, 655370, 65529, 65525, 655363, 65529, 65524, 655364, 65529, 65523, 655370, 65528, 65527, 1048586, 4, 3, 3, 3, 4, 1441795, 2, 4, 1441802, 1, 4, 1441795, 0, 4, 1441796, 65535, 4, 1441796, 65534, 4, 1441803, 65532, 4, 1441802, 65533, 4, 1441796, 5, 2, 1441796, 7, 2, 1441796, 8, 2, 1441795, 11, 2, 1441795, 10, 2, 1441802, 6, 3, 655370, 6, 4, 655364, 6, 5, 655364, 6, 6, 655364, 6, 7, 655364, 6, 8, 655364, 6, 9, 655364, 6, 10, 655371, 6, 11, 655371, 9, 3, 3, 9, 4, 4, 9, 5, 11, 9, 6, 11, 9, 8, 11, 9, 7, 11, 9, 9, 4, 9, 10, 4, 9, 11, 4)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="road-corner" type="GridMap" parent="." unique_id=1996964998]
+mesh_library = ExtResource("13_mlact")
+cell_size = Vector3(0.8, 0.2, 0.8)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(4, 65532, 655360, 65532, 65532, 1048576)
 }
 
 [node name="door2" parent="." unique_id=1968578777 instance=ExtResource("5_fisff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.797437, 0, 4.0210934)
 
-[node name="player" parent="." unique_id=1163194258 instance=ExtResource("6_mlact")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7176704, 0.25031465, 11.237638)
+[node name="door3" parent="." unique_id=53495630 instance=ExtResource("5_fisff")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.409429, 0, -17.593628)
 
 [node name="foliage" type="Node3D" parent="." unique_id=1388657233]
 
@@ -135,30 +157,54 @@ transform = Transform3D(0.49984342, 0, 0.012512706, 0, 0.5, 0, -0.012512706, 0, 
 [node name="bush9" parent="foliage" unique_id=1606874747 instance=ExtResource("8_ql1ak")]
 transform = Transform3D(0.2001745, 0, 0.4581814, 0, 0.5, 0, -0.4581814, 0, 0.2001745, -21.669556, 0, -11.255554)
 
-[node name="lamp" parent="." unique_id=1542482093 instance=ExtResource("10_6xdu0")]
+[node name="grass" parent="foliage" unique_id=1783652069 instance=ExtResource("11_kntan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2038403, 0.2, 8.499067)
+
+[node name="grass2" parent="foliage" unique_id=2039291473 instance=ExtResource("11_kntan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.864618, 0.2, 5.9402065)
+
+[node name="grass3" parent="foliage" unique_id=690610585 instance=ExtResource("11_kntan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.95771, 0.2, 6.762697)
+
+[node name="grass4" parent="foliage" unique_id=1480787624 instance=ExtResource("11_kntan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7742176, 0.2, 11.983929)
+
+[node name="grass5" parent="foliage" unique_id=1113467785 instance=ExtResource("11_kntan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.998137, 0.4, 15.261765)
+
+[node name="decor" type="Node3D" parent="." unique_id=857035987]
+
+[node name="lamp" parent="decor" unique_id=1542482093 instance=ExtResource("10_6xdu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.333345, 0.1, 1.8468982)
 
-[node name="road" type="GridMap" parent="." unique_id=829939733]
-mesh_library = ExtResource("1_kw2u1")
-cell_size = Vector3(1.6, 0.2, 1.6)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(65534, 65520, 1048582, 65534, 65521, 1048582, 65533, 65520, 655363, 2, 65520, 10, 2, 65521, 3, 2, 65522, 4, 2, 65523, 4, 2, 65524, 11, 2, 65525, 10, 2, 65526, 3, 65533, 65521, 655370, 65533, 65522, 655364, 65533, 65523, 655363, 65533, 65524, 655370, 65533, 65525, 655363, 65533, 65526, 655370, 65533, 65527, 655363, 65533, 65528, 655370, 65533, 65529, 655364, 2, 65527, 4, 2, 65528, 11, 2, 65529, 11, 2, 65530, 10, 2, 65531, 3, 65533, 65530, 655364, 65533, 65531, 655371, 65535, 65534, 1441795, 0, 65534, 1441802, 2, 65532, 4, 65533, 65532, 655371, 65534, 65533, 655368, 65535, 65533, 655366, 0, 65533, 655367, 1, 65533, 1441800, 1, 65532, 1441798, 0, 65532, 655365, 65535, 65532, 655365, 65535, 65531, 655365, 65535, 65530, 655365, 65535, 65529, 655365, 0, 65529, 655365, 0, 65530, 655365, 0, 65531, 655365, 0, 65528, 655365, 0, 65527, 1441793, 0, 65526, 1048576, 0, 65525, 655365, 0, 65524, 655365, 0, 65523, 655365, 0, 65522, 655365, 0, 65521, 655365, 0, 65520, 655365, 65535, 65526, 1048577, 65535, 65527, 1441793, 65535, 65528, 655365, 65535, 65520, 655365, 65535, 65521, 655365, 65535, 65522, 655365, 65535, 65523, 655365, 65535, 65524, 655365, 65535, 65525, 655365, 65534, 65522, 1048582, 65534, 65523, 1048582, 65534, 65524, 1048582, 65534, 65525, 655373, 65534, 65526, 1048578, 65534, 65527, 1048578, 65534, 65528, 655372, 65534, 65529, 1048583, 65534, 65530, 1048583, 65534, 65531, 1048582, 65534, 65532, 1048582, 1, 65531, 1441798, 1, 65530, 1441798, 1, 65529, 1441798, 1, 65528, 13, 1, 65527, 1441794, 1, 65526, 1441794, 1, 65525, 12, 1, 65524, 1441799, 1, 65523, 1441798, 1, 65522, 1441798, 1, 65520, 1441798, 1, 65521, 1441798, 65522, 65529, 1048579, 65528, 65522, 1441795, 65526, 65522, 1441795, 65522, 65522, 1441802, 65527, 65522, 1441802, 65525, 65522, 1441796, 65524, 65522, 1441796, 65523, 65522, 1441803, 65523, 65529, 1048586, 65524, 65529, 1048579, 65525, 65529, 1048580, 65526, 65529, 1048587, 65527, 65528, 655371, 65529, 65526, 655370, 65529, 65525, 655363, 65529, 65524, 655364, 65529, 65523, 655370, 65528, 65527, 1048586, 4, 3, 3, 3, 4, 1441795, 2, 4, 1441802, 1, 4, 1441795, 0, 4, 1441796, 65535, 4, 1441796, 65534, 4, 1441803, 65532, 4, 1441802, 65533, 4, 1441796, 5, 2, 1441796, 7, 2, 1441796, 8, 2, 1441795, 11, 2, 1441795, 10, 2, 1441802, 6, 3, 655370, 6, 4, 655364, 6, 5, 655364, 6, 6, 655364, 6, 7, 655364, 6, 8, 655364, 6, 9, 655364, 6, 10, 655371, 6, 11, 655371, 9, 3, 3, 9, 4, 4, 9, 5, 11, 9, 6, 11, 9, 8, 11, 9, 7, 11, 9, 9, 4, 9, 10, 4, 9, 11, 4)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="road-corner" type="GridMap" parent="." unique_id=1996964998]
-mesh_library = ExtResource("13_mlact")
-cell_size = Vector3(0.8, 0.2, 0.8)
-cell_center_x = false
-cell_center_y = false
-cell_center_z = false
-data = {
-"cells": PackedInt32Array(4, 65532, 655360, 65532, 65532, 1048576)
-}
-
-[node name="door3" parent="." unique_id=53495630 instance=ExtResource("5_fisff")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.409429, 0, -17.593628)
-
-[node name="lamp2" parent="." unique_id=1286626265 instance=ExtResource("10_6xdu0")]
+[node name="lamp2" parent="decor" unique_id=1286626265 instance=ExtResource("10_6xdu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.430769, 0.1, -24.07269)
+
+[node name="large-bin" parent="decor" unique_id=628234486 instance=ExtResource("14_taxs5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 21.066935, 0, -3.002964)
+
+[node name="items" type="Node3D" parent="." unique_id=1896029645]
+
+[node name="trash" parent="items" unique_id=1571812383 instance=ExtResource("15_ql1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5094, 0, -7.232239)
+
+[node name="trash2" parent="items" unique_id=813187977 instance=ExtResource("15_ql1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.100033, 0, -5.7117357)
+
+[node name="trash3" parent="items" unique_id=2049932899 instance=ExtResource("15_ql1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.506012, 0, -0.2741661)
+
+[node name="trash4" parent="items" unique_id=780242507 instance=ExtResource("15_ql1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.100039, 0, -11.606244)
+
+[node name="trash5" parent="items" unique_id=1751530605 instance=ExtResource("15_ql1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.20195, 0, -14.896202)
+
+[node name="trash6" parent="items" unique_id=581584171 instance=ExtResource("15_ql1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.17921, 0, -24.100569)
+
+[node name="trash7" parent="items" unique_id=929500480 instance=ExtResource("15_ql1ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.82484, 0, -22.902775)
+
+[node name="player" parent="." unique_id=1163194258 instance=ExtResource("6_mlact")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7176704, 0.25031465, 11.237638)
