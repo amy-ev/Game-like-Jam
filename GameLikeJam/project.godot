@@ -15,6 +15,10 @@ run/main_scene="uid://b80ngj20rgwq"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+Global="*uid://dx2qb781rptxt"
+
 [display]
 
 window/size/viewport_width=320
@@ -28,6 +32,9 @@ window/stretch/scale_mode="integer"
 [global_group]
 
 player=""
+grass=""
+trash=""
+food=""
 
 [input]
 
@@ -85,6 +92,7 @@ interact={
 3d_physics/layer_2="player"
 3d_physics/layer_3="enemies"
 3d_physics/layer_4="interactive"
+3d_physics/layer_5="item"
 
 [physics]
 

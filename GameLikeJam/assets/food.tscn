@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c1omfm7rdy3f4"]
+
+[ext_resource type="Script" uid="uid://d0l75evjft1lf" path="res://assets/item-detection.gd" id="1_3f1ol"]
+[ext_resource type="Texture2D" uid="uid://dqu4fcfpflgkp" path="res://assets/food.png" id="1_62pmh"]
+[ext_resource type="Script" uid="uid://2njq0tr5nhwy" path="res://assets/billboard-item.gd" id="1_iyju4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_62pmh"]
+height = 1.4
+radius = 0.7
+
+[node name="food" type="Area3D" unique_id=1571812383 groups=["food"]]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_3f1ol")
+
+[node name="sprite" type="Sprite3D" parent="." unique_id=931777963 groups=["food"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_62pmh")
+script = ExtResource("1_iyju4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=767430717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70581055, 0)
+shape = SubResource("CylinderShape3D_62pmh")

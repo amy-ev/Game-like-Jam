@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://3rbs7528kwdw"]
+
+[ext_resource type="Script" uid="uid://2njq0tr5nhwy" path="res://assets/billboard-item.gd" id="1_su33e"]
+[ext_resource type="Script" uid="uid://d0l75evjft1lf" path="res://assets/item-detection.gd" id="1_vjf4t"]
+[ext_resource type="Texture2D" uid="uid://dbjl2t8n614uk" path="res://assets/trash.png" id="1_vw14f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vw14f"]
+height = 1.4
+radius = 0.7
+
+[node name="trash" type="Area3D" unique_id=1571812383 groups=["trash"]]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_vjf4t")
+
+[node name="sprite" type="Sprite3D" parent="." unique_id=931777963 groups=["trash"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+pixel_size = 0.05
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_vw14f")
+script = ExtResource("1_su33e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=220243408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70581055, 0)
+shape = SubResource("CylinderShape3D_vw14f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
