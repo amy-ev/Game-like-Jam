@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var CAMERA_CONTROLLER := $Camera3D
 @onready var LIGHT_CONTROLLER := $Camera3D/SpotLight3D
+@onready var GUI:= $"gui"
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
@@ -51,6 +52,10 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		_rotation_input = -event.relative.x * MOUSE_SENSITIVITY
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
+		
+	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		GUI.get_node("attack-sprite").play("scratch")
+		print("attack")
 
 
 func _update_camera(delta):
