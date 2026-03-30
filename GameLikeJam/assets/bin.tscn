@@ -98,6 +98,7 @@ height = 2.4050293
 radius = 1.6381836
 
 [node name="bin" type="Area3D" unique_id=1887605077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_yi80m")
