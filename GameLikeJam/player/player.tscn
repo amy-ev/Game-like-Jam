@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0e3df65glqoi" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://c30nc57s6mgnu" path="res://world/gui.tscn" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://dpvjleqlibc7a" path="res://player/player_stats.gd" id="3_g1dw6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
 height = 1.5
@@ -56,3 +57,6 @@ shadow_blur = 10.0
 omni_range = 40.0
 
 [node name="gui" parent="." unique_id=828133794 instance=ExtResource("2_rkbax")]
+
+[node name="player_stats" type="Node" parent="." unique_id=2111614096]
+script = ExtResource("3_g1dw6")

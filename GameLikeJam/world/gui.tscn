@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c30nc57s6mgnu"]
 
 [ext_resource type="Texture2D" uid="uid://4cmeca4w2h2e" path="res://assets/ui-panel.png" id="1_lgo0l"]
+[ext_resource type="Script" uid="uid://ska28t6q4xoa" path="res://world/gui.gd" id="1_uj22v"]
 [ext_resource type="Texture2D" uid="uid://cy86q2n8yy03j" path="res://assets/player-avatar.png" id="2_uj22v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl0n6"]
@@ -56,6 +57,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_uj22v")
 
 [node name="gui" type="NinePatchRect" parent="." unique_id=828133794]
 clip_contents = true
