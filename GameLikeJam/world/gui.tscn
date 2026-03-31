@@ -3,14 +3,24 @@
 [ext_resource type="Texture2D" uid="uid://4cmeca4w2h2e" path="res://assets/ui-panel.png" id="1_lgo0l"]
 [ext_resource type="Script" uid="uid://ska28t6q4xoa" path="res://world/gui.gd" id="1_uj22v"]
 [ext_resource type="Texture2D" uid="uid://cy86q2n8yy03j" path="res://assets/player-avatar.png" id="2_uj22v"]
+[ext_resource type="Texture2D" uid="uid://5b44iu865x7t" path="res://assets/player-avatar-bite.png" id="3_wcm0j"]
 [ext_resource type="Texture2D" uid="uid://daurbe7qi2438" path="res://assets/scratch.png" id="4_nl0n6"]
 [ext_resource type="Texture2D" uid="uid://b121hie4g3gx6" path="res://assets/bite.png" id="4_pn8sv"]
+[ext_resource type="Texture2D" uid="uid://d15hq2pefcohy" path="res://assets/arm.png" id="6_wll1r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl0n6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pn8sv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wll1r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b87wv"]
+atlas = ExtResource("3_wcm0j")
+region = Rect2(0, 0, 336, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia8ra"]
+atlas = ExtResource("3_wcm0j")
+region = Rect2(336, 0, 336, 336)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgo0l"]
 atlas = ExtResource("2_uj22v")
@@ -26,6 +36,17 @@ region = Rect2(672, 0, 336, 336)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pn8sv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b87wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia8ra")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 6.0,
 "texture": SubResource("AtlasTexture_lgo0l")
@@ -124,6 +145,47 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu4xm"]
+atlas = ExtResource("6_wll1r")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axq3k"]
+atlas = ExtResource("6_wll1r")
+region = Rect2(224, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7hjs"]
+atlas = ExtResource("6_wll1r")
+region = Rect2(112, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvutp"]
+atlas = ExtResource("6_wll1r")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xdtak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu4xm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_axq3k")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_o7hjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvutp")
+}],
+"loop": false,
+"name": &"scratch",
+"speed": 9.0
+}]
+
 [node name="Control" type="Control" unique_id=531297759]
 custom_minimum_size = Vector2(320, 240)
 layout_mode = 3
@@ -170,22 +232,36 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nl0n6")
 
-[node name="Label" type="Label" parent="gui/panel/HBoxContainer/level" unique_id=314215864]
+[node name="VBoxContainer" type="VBoxContainer" parent="gui/panel/HBoxContainer/level" unique_id=950327024]
 layout_mode = 2
-text = "1"
+
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/level/VBoxContainer" unique_id=314215864]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "LEVEL"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="level" type="Label" parent="gui/panel/HBoxContainer/level/VBoxContainer" unique_id=1599154052]
+layout_mode = 2
 
 [node name="score" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1032070076]
 custom_minimum_size = Vector2(57, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pn8sv")
 
-[node name="Label" type="Label" parent="gui/panel/HBoxContainer/score" unique_id=1364979807]
+[node name="VBoxContainer" type="VBoxContainer" parent="gui/panel/HBoxContainer/score" unique_id=90721769]
 layout_mode = 2
-text = "2"
+
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/score/VBoxContainer" unique_id=1364979807]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "SCORE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="points" type="Label" parent="gui/panel/HBoxContainer/score/VBoxContainer" unique_id=43326319]
+layout_mode = 2
 
 [node name="lives" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1239573808]
 custom_minimum_size = Vector2(32, 0)
@@ -207,9 +283,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_wll1r")
 position = Vector2(24, 24)
 scale = Vector2(0.143, 0.143)
 sprite_frames = SubResource("SpriteFrames_pn8sv")
-animation = &"look-around"
+animation = &"attack"
 autoplay = "look-around"
-frame_progress = 0.56236655
+frame = 1
+frame_progress = 1.0
 
 [node name="health" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1384828062]
 custom_minimum_size = Vector2(58, 0)
@@ -250,6 +327,12 @@ axis_stretch_vertical = 1
 position = Vector2(160, 80)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_t4hft")
-animation = &"bite"
-frame = 4
+autoplay = "default"
+
+[node name="arm" type="AnimatedSprite2D" parent="." unique_id=1628632496]
+position = Vector2(230, 120)
+sprite_frames = SubResource("SpriteFrames_xdtak")
+animation = &"scratch"
+autoplay = "default"
+frame = 2
 frame_progress = 1.0

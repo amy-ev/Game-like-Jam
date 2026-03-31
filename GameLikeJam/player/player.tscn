@@ -11,6 +11,9 @@ height = 1.5
 radius = 0.5908203
 height = 1.6274414
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1dw6"]
+size = Vector3(1, 1.6748657, 1.3879395)
+
 [node name="player" type="CharacterBody3D" unique_id=1163194258 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25031465, 0)
 collision_layer = 2
@@ -60,3 +63,13 @@ omni_range = 40.0
 
 [node name="player_stats" type="Node" parent="." unique_id=2111614096]
 script = ExtResource("3_g1dw6")
+
+[node name="hitbox" type="Area3D" parent="." unique_id=978701735]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=1031591359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5799981, -0.806396)
+shape = SubResource("BoxShape3D_g1dw6")
+disabled = true
+debug_color = Color(0.93, 0.527, 0, 0.67058825)

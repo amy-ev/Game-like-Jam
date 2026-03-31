@@ -4,7 +4,9 @@ extends CharacterBody3D
 @onready var LIGHT_CONTROLLER := $Camera3D/SpotLight3D
 @onready var GUI:= $"gui"
 
-const SPEED = 50.0
+@onready var hitbox = $hitbox/CollisionShape3D
+
+const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 const TURN_SPEED = 0.05
 
@@ -21,6 +23,9 @@ var _player_rotation : Vector3
 var _camera_rotation : Vector3
 var _light_rotation : Vector3
 
+var knockback = 15
+var damage = 10
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	CAMERA_CONTROLLER.make_current()
@@ -29,7 +34,11 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta
-
+	if GUI.get_node("attack-sprite").animation == "scratch":
+		if GUI.get_node("attack-sprite").frame == 1:
+			hitbox.disabled = true
+			
+			
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -58,8 +67,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		GUI.get_node("attack-sprite").play("scratch")
-		print("attack")
-
+		GUI.get_node("arm").play("scratch")
+		GUI.get_node("gui/panel/HBoxContainer/avatar/avatar").play("attack")
+		hitbox.disabled = false
 
 func _update_camera(delta):
 	_mouse_rotation.x += _tilt_input * delta
