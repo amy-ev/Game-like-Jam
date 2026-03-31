@@ -12,13 +12,17 @@ var map = []
 var startPos = 0
 
 signal mapGenerated
+signal edgesGenerated
 signal mapDrawn
+
 
 #TODO: add function for adding doors - with a doors node
 func _ready() -> void:
 	#add_child(player)
 	generate_path()
 	await mapGenerated
+	define_edges()
+	await edgesGenerated
 	print_map()
 
 func generate_path():
@@ -108,7 +112,75 @@ func generate_path():
 				map[y][x] = "E"
 				finished = true	
 				emit_signal("mapGenerated")	
-
+func define_edges():
+	var changeRoom = 0
+	for y in height:
+		for x in width:
+			await get_tree().create_timer(0.0001).timeout
+			if y == 0:
+				match map[y][x]:
+					"1":
+						map[y][x] = "1.1"
+					"2":
+						map[y][x] = "2.1"
+					"3":
+						map[y][x] = "3.1"
+					"4":
+						map[y][x] = "4.1"
+					"E":
+						map[y][x] = "E.1"
+			elif y == height - 1:
+				match map[y][x]:
+					"1":
+						map[y][x] = "1.2"
+					"2":
+						map[y][x] = "2.2"
+					"3":
+						map[y][x] = "3.2"
+					"4":
+						map[y][x] = "4.2"
+					"E":
+						map[y][x] = "E.2"
+			else:
+				changeRoom = randi_range(0,100)
+				if changeRoom % 2 == 0:
+					if map[y-1][x] == "0":
+						map[y-1][x] = "1.1"
+					elif map[y+1][x] == "0":
+						map[y+1][x] = "1.2"
+				else:
+					if map[y-1][x] == "0":
+						match map[y][x]:
+							"S":
+								map[y][x] = "S.1"
+							"1":
+								map[y][x] = "1.1"
+							"2":
+								map[y][x] = "2.1"
+							"3":
+								map[y][x] = "3.1"
+							"4":
+								map[y][x] = "4.1"
+							"E":
+								map[y][x] = "E.1"
+					elif map[y+1][x] == "0":
+						match map[y][x]:
+							"S":
+								map[y][x] = "S.2"
+							"1":
+								map[y][x] = "1.2"
+							"2":
+								map[y][x] = "2.2"
+							"3":
+								map[y][x] = "3.2"
+							"4":
+								map[y][x] = "4.2"
+							"E":
+								map[y][x] = "E.2"
+					else:
+						map[y][x] = map[y][x]
+	emit_signal("edgesGenerated")
+					
 func print_map():
 	#loop through grid
 	for y in height:
@@ -127,18 +199,38 @@ func print_map():
 					
 				"1":
 					pathName = str("res://world/rooms/1.tscn")
+				"1.1":
+					pathName = str("res://world/rooms/1.1.tscn")
+				"1.2":
+					pathName = str("res://world/rooms/1.2.tscn")
 					
 				"2":
 					pathName = str("res://world/rooms/2.tscn")
+				"2.1":
+					pathName = str("res://world/rooms/2.1.tscn")
+				"2.2":
+					pathName = str("res://world/rooms/2.2.tscn")
 					
 				"3":
 					pathName = str("res://world/rooms/3.tscn")
+				"3.1":
+					pathName = str("res://world/rooms/3.1.tscn")
+				"3.2":
+					pathName = str("res://world/rooms/3.2.tscn")
 					
 				"4":
 					pathName = str("res://world/rooms/4.tscn")
+				"4.1":
+					pathName = str("res://world/rooms/4.1.tscn")
+				"4.2":
+					pathName = str("res://world/rooms/4.2.tscn")
 					
 				"E":
 					pathName = str("res://world/rooms/E.tscn")
+				"E.1":
+					pathName = str("res://world/rooms/E.1.tscn")
+				"E.2":
+					pathName = str("res://world/rooms/E.2.tscn")
 					
 				"0":
 					pathName = str("res://world/rooms/0.tscn")
@@ -146,6 +238,7 @@ func print_map():
 			place_map(pathName, x * room_w, y * room_h)
 	# print out the array 
 	for i in height:
+		print("y: ", i)
 		print(map[i])
 	emit_signal("mapDrawn")
 
