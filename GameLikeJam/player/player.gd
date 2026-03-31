@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var LIGHT_CONTROLLER := $Camera3D/SpotLight3D
 @onready var GUI:= $"gui"
 
-const SPEED = 10.0
+const SPEED = 50.0
 const JUMP_VELOCITY = 4.5
 const TURN_SPEED = 0.05
 
@@ -23,6 +23,7 @@ var _light_rotation : Vector3
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	CAMERA_CONTROLLER.make_current()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -37,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		
+	#TODO: REMVOE THIS BEFORE EXPORT
 	if Input.is_action_pressed("jump"):
 		velocity.y = JUMP_VELOCITY
 	elif Input.is_action_pressed("crouch"):
@@ -48,7 +49,9 @@ func _physics_process(delta: float) -> void:
 	_update_camera(delta)
 
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		_rotation_input = -event.relative.x * MOUSE_SENSITIVITY
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
