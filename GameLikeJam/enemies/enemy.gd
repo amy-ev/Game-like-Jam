@@ -19,6 +19,7 @@ var state = idle
 
 var facing_direction = Vector3(0,0, -1)
 var player_detected = false
+var player_in_area = false
 var view_distance = 10.0
 var view_angle = 40.0
 
@@ -31,18 +32,28 @@ func _physics_process(delta: float) -> void:
 	match state:
 		idle:
 			velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
-			update_animation(Vector3.ZERO, delta)
-			#seek_player()
+			if player_in_area:
+				var look_dir = global_position.direction_to(player.global_position)
+				facing_direction = look_dir
+				update_animation(Vector3.ZERO, delta)
+			else:
+				update_animation(Vector3.ZERO, delta)
 			check_state()
 		wander:
 			var direction = position.direction_to(wander_controller.target_pos)
-			#seek_player()
-			check_state()
-			update_animation(direction,delta)
 			
-			if position.distance_to(wander_controller.target_pos)<=2:
-				state = pick_state([idle,wander])
-				wander_controller.start_timer((randi_range(1,3)))
+			if player_in_area:
+				velocity = velocity.move_toward(Vector3.ZERO,friction *delta)
+				var look_dir = global_position.direction_to(player.global_position)
+				facing_direction = look_dir
+				update_animation(Vector3.ZERO, delta)
+			else:
+				check_state()
+				update_animation(direction,delta)
+				
+				if position.distance_to(wander_controller.target_pos)<=2:
+					state = pick_state([idle,wander])
+					wander_controller.start_timer((randi_range(1,3)))
 		chase:
 			if player_detected:
 				var direction = position.direction_to(player.position)
@@ -94,7 +105,7 @@ func get_animation_dir(dir):
 		return "back"
 	elif degrees > 45 and degrees <= 135:
 		return "right"
-	elif degrees > 135 and degrees > -135:
+	elif degrees > 135 or degrees > -135:
 		return "front"
 	else:
 		return "left"
@@ -133,3 +144,12 @@ func seek_player():
 			print("NOPE")
 	else:
 		player_detected = false
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body == player:
+		player_in_area = true
+		
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body == player:
+		player_in_area = false
