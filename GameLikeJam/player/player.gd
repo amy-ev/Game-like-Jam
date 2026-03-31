@@ -2,8 +2,10 @@ extends CharacterBody3D
 
 @onready var CAMERA_CONTROLLER := $Camera3D
 @onready var LIGHT_CONTROLLER := $Camera3D/SpotLight3D
-@onready var GUI:= $"gui"
 
+@onready var avatar:= $gui/gui/panel/HBoxContainer/avatar/avatar
+@onready var attack_sprite:= $"gui/attack-sprite"
+@onready var arm:= $gui/arm
 @onready var hitbox = $hitbox/CollisionShape3D
 
 const SPEED = 10.0
@@ -27,6 +29,7 @@ var knockback = 15
 var damage = 10
 
 func _ready():
+	Global.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	CAMERA_CONTROLLER.make_current()
 
@@ -34,11 +37,11 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta
-	if GUI.get_node("attack-sprite").animation == "scratch":
-		if GUI.get_node("attack-sprite").frame == 1:
+	if attack_sprite.animation == "scratch":
+		if attack_sprite.frame == 1:
 			hitbox.disabled = true
 			
-			
+	
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -66,11 +69,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
 		
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		GUI.get_node("attack-sprite").play("scratch")
-		GUI.get_node("arm").play("scratch")
-		GUI.get_node("gui/panel/HBoxContainer/avatar/avatar").play("attack")
 		hitbox.disabled = false
-
+		play_attack_animations()
+	
+	
+func play_attack_animations():
+	attack_sprite.play("scratch")
+	arm.play("scratch")
+	avatar.play("attack")
+	await avatar.animation_finished
+	avatar.play("look-around")
+	
+		
 func _update_camera(delta):
 	_mouse_rotation.x += _tilt_input * delta
 	_mouse_rotation.x = clamp(_mouse_rotation.x, TILT_LOWER_LIMIT, TILT_UPPER_LIMIT)
@@ -92,3 +102,7 @@ func _update_camera(delta):
 	_rotation_input = 0.0
 	_tilt_input = 0.0
 	
+
+func _on_hurtbox_area_entered(area: Area3D) -> void:
+		if area.name == "hitbox":
+			print("oh my")

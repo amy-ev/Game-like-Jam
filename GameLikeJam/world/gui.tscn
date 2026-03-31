@@ -14,10 +14,6 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wll1r"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b87wv"]
-atlas = ExtResource("3_wcm0j")
-region = Rect2(0, 0, 336, 336)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia8ra"]
 atlas = ExtResource("3_wcm0j")
 region = Rect2(336, 0, 336, 336)
@@ -37,9 +33,6 @@ region = Rect2(672, 0, 336, 336)
 [sub_resource type="SpriteFrames" id="SpriteFrames_pn8sv"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b87wv")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ia8ra")
 }],
@@ -262,6 +255,10 @@ vertical_alignment = 1
 
 [node name="points" type="Label" parent="gui/panel/HBoxContainer/score/VBoxContainer" unique_id=43326319]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
 
 [node name="lives" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1239573808]
 custom_minimum_size = Vector2(32, 0)
@@ -285,7 +282,6 @@ scale = Vector2(0.143, 0.143)
 sprite_frames = SubResource("SpriteFrames_pn8sv")
 animation = &"attack"
 autoplay = "look-around"
-frame = 1
 frame_progress = 1.0
 
 [node name="health" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1384828062]

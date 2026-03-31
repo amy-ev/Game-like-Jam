@@ -1,11 +1,12 @@
 extends CharacterBody3D
 
-@onready var player = get_tree().get_first_node_in_group("player")
+#var player = null
+#@onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $sprite
 @onready var wander_controller = $wander_controller
 @onready var ray = $RayCast3D
 @onready var stats = $fox_stats
-
+var player: CharacterBody3D = null
 enum{
 	idle,
 	wander,
@@ -27,6 +28,12 @@ var view_distance = 10.0
 var view_angle = 40.0
 
 func _physics_process(delta: float) -> void:
+	#if not is_instance_valid(player):
+		#player = get_tree().get_first_node_in_group("player")
+	#
+	if Global.player != null:
+		player = Global.player
+		
 	if wander_controller.start_pos == null:
 		wander_controller.start_pos = position
 	
@@ -60,7 +67,7 @@ func _physics_process(delta: float) -> void:
 					wander_controller.start_timer((randi_range(1,3)))
 		chase:
 			if player_detected:
-				var direction = position.direction_to(player.position)
+				var direction = global_position.direction_to(player.global_position)
 				update_animation(direction, delta)
 			else:
 				state = idle
@@ -93,6 +100,8 @@ func update_animation(direction,delta):
 		sprite.play(anim_dir + "_move")
 
 func get_animation_dir(dir):
+	if player == null:
+		return "front"
 	var camera = player.get_node("Camera3D")
 	
 	var cam_forward = -camera.global_transform.basis.z
@@ -123,13 +132,13 @@ func seek_player():
 		player_detected = false
 		return
 		
-	var distance_to_player = position.distance_to(player.position)
+	var distance_to_player = global_position.distance_to(player.global_position)
 	
 	if distance_to_player > view_distance:
 		player_detected = false
 		return
 	
-	var direction_to_player = position.direction_to(player.position)
+	var direction_to_player = global_position.direction_to(player.global_position)
 	
 	var dot = facing_direction.dot(direction_to_player)
 	if dot <= cos(deg_to_rad(view_angle)):
@@ -138,6 +147,7 @@ func seek_player():
 
 	var world_target = global_position + (direction_to_player * view_distance)
 	ray.target_position = ray.to_local(world_target)
+	ray.enabled = true
 	ray.force_raycast_update()
 	
 	if ray.is_colliding():
@@ -145,14 +155,17 @@ func seek_player():
 		if collider == player:
 			player_detected = true
 			state = chase
-		else:
-			player_detected = false
+	
+		elif collider is Area3D and collider.owner == player:
+				player_detected = true
+				state = chase
 	else:
 		player_detected = false
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == player:
+		print("hello")
 		player_in_area = true
 		
 func _on_area_3d_body_exited(body: Node3D) -> void:
@@ -164,7 +177,7 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 	if area.name == "hitbox":
 		if area.owner == player:
 			
-			var direction = (position - player.position).normalized()
+			var direction = (global_position - player.global_position).normalized()
 			velocity = direction * player.knockback
 			var damage_value = player.damage
 			stats.health -= damage_value

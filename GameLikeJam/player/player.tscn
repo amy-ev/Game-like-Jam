@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d0e3df65glqoi" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://c30nc57s6mgnu" path="res://world/gui.tscn" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://dpvjleqlibc7a" path="res://player/player_stats.gd" id="3_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://6mw7wc6hqmhw" path="res://enemies/hurtbox.tscn" id="4_yw30f"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
 height = 1.5
@@ -12,7 +13,11 @@ radius = 0.5908203
 height = 1.6274414
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g1dw6"]
-size = Vector3(1, 1.6748657, 1.3879395)
+size = Vector3(1, 1.6748657, 0.9063263)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yw30f"]
+height = 1.7269287
+radius = 0.86376953
 
 [node name="player" type="CharacterBody3D" unique_id=1163194258 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25031465, 0)
@@ -69,7 +74,17 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=1031591359]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5799981, -0.806396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5799981, -0.5655894)
 shape = SubResource("BoxShape3D_g1dw6")
 disabled = true
 debug_color = Color(0.93, 0.527, 0, 0.67058825)
+
+[node name="hurtbox" parent="." unique_id=1730025536 instance=ExtResource("4_yw30f")]
+
+[node name="CollisionShape3D" parent="hurtbox" index="0" unique_id=1713672875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63079834, 0)
+shape = SubResource("CylinderShape3D_yw30f")
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="hurtbox"]

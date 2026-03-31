@@ -1,5 +1,7 @@
 extends Node
 
+
+var player: CharacterBody3D = null
 var points = 0
 
 var level = 1
