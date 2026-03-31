@@ -4,11 +4,14 @@ extends CharacterBody3D
 @onready var sprite = $sprite
 @onready var wander_controller = $wander_controller
 @onready var ray = $RayCast3D
+@onready var stats = $fox_stats
 
 enum{
 	idle,
 	wander,
-	chase
+	chase,
+	hurt,
+	dead
 }
 
 var acceleration = 10
@@ -26,8 +29,9 @@ var view_angle = 40.0
 func _physics_process(delta: float) -> void:
 	if wander_controller.start_pos == null:
 		wander_controller.start_pos = position
-		
-	seek_player()
+	
+	if state != hurt and state != dead:
+		seek_player()
 	
 	match state:
 		idle:
@@ -60,7 +64,10 @@ func _physics_process(delta: float) -> void:
 				update_animation(direction, delta)
 			else:
 				state = idle
-			
+		hurt:
+			velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
+		dead:
+			velocity = Vector3.ZERO
 	move_and_slide()
 	
 func check_state():
@@ -105,7 +112,7 @@ func get_animation_dir(dir):
 		return "back"
 	elif degrees > 45 and degrees <= 135:
 		return "right"
-	elif degrees > 135 or degrees > -135:
+	elif degrees > 135 or degrees <= -135:
 		return "front"
 	else:
 		return "left"
@@ -136,12 +143,10 @@ func seek_player():
 	if ray.is_colliding():
 		var collider = ray.get_collider()
 		if collider == player:
-			print("PLAYER DETECTED")
 			player_detected = true
 			state = chase
 		else:
 			player_detected = false
-			print("NOPE")
 	else:
 		player_detected = false
 
@@ -153,3 +158,29 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body == player:
 		player_in_area = false
+
+
+func _on_hurtbox_area_entered(area: Area3D) -> void:
+	if area.name == "hitbox":
+		if area.owner == player:
+			
+			var direction = (position - player.position).normalized()
+			velocity = direction * player.knockback
+			var damage_value = player.damage
+			stats.health -= damage_value
+			if state == dead:
+				return
+			state = hurt
+			sprite.play("hurt")
+			print(stats.health)
+
+
+func _on_fox_stats_no_health() -> void:
+	state = dead
+	sprite.play("death")
+
+func _on_sprite_animation_finished() -> void:
+	if sprite.animation == "hurt" and state != dead:
+		state = idle
+	if sprite.animation == "death":
+		queue_free()

@@ -1,107 +1,113 @@
 [gd_scene format=3 uid="uid://djsmb2tmtqsm5"]
 
-[ext_resource type="Script" uid="uid://dmetuj00bftll" path="res://enemies/enemy.gd" id="1_fw1ev"]
-[ext_resource type="Texture2D" uid="uid://dskgopnn0vo18" path="res://assets/fox.png" id="2_7frlh"]
-[ext_resource type="PackedScene" uid="uid://dmfj43nunkfh2" path="res://enemies/wander_controller.tscn" id="3_orwns"]
+[ext_resource type="Script" uid="uid://dmetuj00bftll" path="res://enemies/fox.gd" id="1_6ukp8"]
+[ext_resource type="Texture2D" uid="uid://dskgopnn0vo18" path="res://assets/fox.png" id="2_w1os4"]
+[ext_resource type="PackedScene" uid="uid://dmfj43nunkfh2" path="res://enemies/wander_controller.tscn" id="3_x6gnr"]
+[ext_resource type="PackedScene" uid="uid://d2k5n3dwwvmlt" path="res://enemies/fox_stats.tscn" id="4_po0vf"]
+[ext_resource type="PackedScene" uid="uid://6mw7wc6hqmhw" path="res://enemies/hurtbox.tscn" id="5_w1os4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7frlh"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_orwns"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6vjd"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07tka"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(128, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t1x0"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(192, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epsnb"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w5fm"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uba7a"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(64, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28xqf"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(128, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g67el"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cve8t"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccbdt"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mgey2"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjbay"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0h01o"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(192, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1os4"]
+atlas = ExtResource("2_w1os4")
+region = Rect2(128, 256, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5hpbo"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cidi"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_grymm"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymuxt"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dcpb"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hd7e4"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvjrt"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(0, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kg1no"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(64, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofl0k"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(128, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7mk6"]
-atlas = ExtResource("2_7frlh")
+atlas = ExtResource("2_w1os4")
 region = Rect2(192, 192, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7frlh"]
@@ -149,7 +155,7 @@ animations = [{
 "speed": 6.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_g67el")
 }],
 "loop": false,
@@ -180,6 +186,14 @@ animations = [{
 "loop": true,
 "name": &"front_move",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1os4")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -236,14 +250,17 @@ animations = [{
 height = 1.7089722
 radius = 2.796875
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_orwns"]
-radius = 0.66015625
-height = 1.8339539
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rof5a"]
+height = 1.7106934
+radius = 0.67041016
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1os4"]
+size = Vector3(0.9259033, 1.6071777, 0.7619629)
 
 [node name="fox" type="CharacterBody3D" unique_id=1140301554]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_fw1ev")
+script = ExtResource("1_6ukp8")
 
 [node name="sprite" type="AnimatedSprite3D" parent="." unique_id=1932567919]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
@@ -253,9 +270,9 @@ shaded = true
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_7frlh")
-animation = &"front_idle"
+animation = &"hurt"
 
-[node name="wander_controller" parent="." unique_id=401173984 instance=ExtResource("3_orwns")]
+[node name="wander_controller" parent="." unique_id=401173984 instance=ExtResource("3_x6gnr")]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2133469355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0)
@@ -275,8 +292,23 @@ debug_shape_custom_color = Color(0.7918749, 0.100432836, 3.85046e-07, 1)
 debug_shape_thickness = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1708258927]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90128636, 0)
-shape = SubResource("CapsuleShape3D_orwns")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8492806, 0)
+shape = SubResource("CylinderShape3D_rof5a")
 
+[node name="fox_stats" parent="." unique_id=1664943031 instance=ExtResource("4_po0vf")]
+
+[node name="hurtbox" parent="." unique_id=1730025536 instance=ExtResource("5_w1os4")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" parent="hurtbox" index="0" unique_id=1713672875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03704834, 0.80822754, -0.029907227)
+shape = SubResource("BoxShape3D_w1os4")
+
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="noHealth" from="fox_stats" to="." method="_on_fox_stats_no_health"]
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="hurtbox"]

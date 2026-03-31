@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://6mw7wc6hqmhw"]
+
+[sub_resource type="GDScript" id="GDScript_fcel4"]
+script/source = "extends Area3D
+
+signal invinc_start
+signal invinc_end
+
+@onready var timer = $Timer
+@export var invincible = false
+
+func _on_area_entered(area):
+	if area.name == \"hitbox\":
+
+		#var enemy = area.get_parent().get_parent()
+		#var enemies_name = str(enemy.name).rstrip(\"0123456789\")
+		#var damage_value = enemy.get_node(enemies_name + \"_stats\").damage
+		print(\"HELLO\")
+		start_invincibility(0.5)
+
+func start_invincibility(time):
+	self.invincible = true
+	emit_signal(\"invinc_start\")
+	timer.start(time)
+
+func _on_timer_timeout():
+	self.invincible = false
+	emit_signal(\"invinc_end\")
+
+func _on_invinc_start():
+	set_deferred(\"monitoring\",false)
+
+func _on_invinc_end():
+	set_deferred(\"monitoring\",true)
+"
+
+[node name="hurtbox" type="Area3D" unique_id=1730025536]
+script = SubResource("GDScript_fcel4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1713672875]
+
+[node name="Timer" type="Timer" parent="." unique_id=761109078]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="invinc_end" from="." to="." method="_on_invinc_end"]
+[connection signal="invinc_start" from="." to="." method="_on_invinc_start"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

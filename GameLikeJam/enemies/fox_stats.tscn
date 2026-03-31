@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d2k5n3dwwvmlt"]
+
+[sub_resource type="GDScript" id="GDScript_hqsx0"]
+script/source = "extends Node
+
+@export var damage = Global.fox_damage
+
+signal noHealth
+signal healthChanged
+
+@export var max_health = Global.fox_health
+@onready var health = max_health:
+	get:
+		return health
+	set(value):
+		health = value
+		emit_signal(\"healthChanged\")
+		if health <= 0:
+			emit_signal(\"noHealth\") 
+"
+
+[node name="fox_stats" type="Node" unique_id=1664943031]
+script = SubResource("GDScript_hqsx0")
