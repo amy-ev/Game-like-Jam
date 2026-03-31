@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $sprite
 @onready var wander_controller = $wander_controller
+@onready var ray = $RayCast3D
 
 enum{
 	idle,
@@ -17,20 +18,25 @@ var friction = 200
 var state = idle
 
 var facing_direction = Vector3(0,0, -1)
+var player_detected = false
+var view_distance = 10.0
+var view_angle = 40.0
 
 func _physics_process(delta: float) -> void:
 	if wander_controller.start_pos == null:
 		wander_controller.start_pos = position
+		
+	seek_player()
 	
 	match state:
 		idle:
 			velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
 			update_animation(Vector3.ZERO, delta)
-
+			#seek_player()
 			check_state()
 		wander:
 			var direction = position.direction_to(wander_controller.target_pos)
-
+			#seek_player()
 			check_state()
 			update_animation(direction,delta)
 			
@@ -38,7 +44,12 @@ func _physics_process(delta: float) -> void:
 				state = pick_state([idle,wander])
 				wander_controller.start_timer((randi_range(1,3)))
 		chase:
-			pass
+			if player_detected:
+				var direction = position.direction_to(player.position)
+				update_animation(direction, delta)
+			else:
+				state = idle
+			
 	move_and_slide()
 	
 func check_state():
@@ -87,3 +98,38 @@ func get_animation_dir(dir):
 		return "front"
 	else:
 		return "left"
+		
+
+func seek_player():
+	if player == null:
+		player_detected = false
+		return
+		
+	var distance_to_player = position.distance_to(player.position)
+	
+	if distance_to_player > view_distance:
+		player_detected = false
+		return
+	
+	var direction_to_player = position.direction_to(player.position)
+	
+	var dot = facing_direction.dot(direction_to_player)
+	if dot <= cos(deg_to_rad(view_angle)):
+		player_detected = false
+		return
+
+	var world_target = global_position + (direction_to_player * view_distance)
+	ray.target_position = ray.to_local(world_target)
+	ray.force_raycast_update()
+	
+	if ray.is_colliding():
+		var collider = ray.get_collider()
+		if collider == player:
+			print("PLAYER DETECTED")
+			player_detected = true
+			state = chase
+		else:
+			player_detected = false
+			print("NOPE")
+	else:
+		player_detected = false

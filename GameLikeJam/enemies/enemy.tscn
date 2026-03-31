@@ -233,8 +233,8 @@ animations = [{
 }]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fw1ev"]
-height = 3.2
-radius = 6.4
+height = 3.5451417
+radius = 2.3657227
 
 [node name="fox" type="CharacterBody3D" unique_id=1140301554]
 collision_layer = 4
@@ -251,13 +251,21 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_7frlh")
 animation = &"front_idle"
 
-[node name="Area3D" type="Area3D" parent="sprite" unique_id=2133469355]
+[node name="wander_controller" parent="." unique_id=401173984 instance=ExtResource("3_orwns")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2133469355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0)
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="sprite/Area3D" unique_id=1188437510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1188437510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4298463, 0)
 shape = SubResource("CylinderShape3D_fw1ev")
 debug_color = Color(0.9651857, 6.738305e-07, 0.49114835, 0.41960785)
 
-[node name="wander_controller" parent="." unique_id=401173984 instance=ExtResource("3_orwns")]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=240524507]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.0575386, 0)
+target_position = Vector3(0, 0, 0)
+collision_mask = 2
+debug_shape_custom_color = Color(0.7918749, 0.100432836, 3.85046e-07, 1)
+debug_shape_thickness = 5
