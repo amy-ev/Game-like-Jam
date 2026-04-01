@@ -1,6 +1,6 @@
 extends Node
 
-
+var raccoon_vision = false
 var player: CharacterBody3D = null
 var points = 0
 

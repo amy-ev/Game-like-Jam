@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b80ngj20rgwq"]
 
 [ext_resource type="Script" uid="uid://d34vueb1iqceo" path="res://world/world.gd" id="1_6xmxd"]
+[ext_resource type="PackedScene" uid="uid://qasul7tdg00p" path="res://shaders/shader-overlay.tscn" id="1_tcf2h"]
 
 [sub_resource type="Environment" id="Environment_tlwt5"]
 ambient_light_color = Color(0.011764706, 0.03137255, 0.05882353, 1)
@@ -13,17 +14,21 @@ fog_depth_curve = 0.045752835
 fog_depth_begin = 0.0
 fog_depth_end = 4000.0
 
-[node name="world" type="Node3D" unique_id=1011780645]
+[node name="Node" type="Node" unique_id=1547359352]
+
+[node name="world" type="Node3D" parent="." unique_id=1011780645]
 script = ExtResource("1_6xmxd")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1486320718]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="world" unique_id=1486320718]
 environment = SubResource("Environment_tlwt5")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1397078999]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="world" unique_id=1397078999]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 10, 0)
 visible = false
 light_energy = 0.5
 light_indirect_energy = 10.0
 shadow_enabled = true
 
-[node name="rooms" type="Node3D" parent="." unique_id=1089986812]
+[node name="rooms" type="Node3D" parent="world" unique_id=1089986812]
+
+[node name="MeshInstance2D" parent="." unique_id=1411555812 instance=ExtResource("1_tcf2h")]
