@@ -1,12 +1,10 @@
 extends Node3D
 
 @onready var rooms = $rooms
-@onready var width = 6
+@onready var width = 4
 @onready var height = 4
 @onready var room_w = 51.2
 @onready var room_h = 51.2
-
-@onready var player = preload("res://player/player.tscn").instantiate()
 
 var map = []
 var startPos = 0
@@ -16,9 +14,8 @@ signal edgesGenerated
 signal mapDrawn
 
 
-#TODO: add function for adding doors - with a doors node
 func _ready() -> void:
-	#add_child(player)
+
 	generate_path()
 	await mapGenerated
 	define_edges()
@@ -47,8 +44,7 @@ func generate_path():
 	else:
 		map[startPos][0] = "S"
 	y = startPos
-	#player.set_position(Vector3(50.0,50.0,50.0))
-
+	
 	var nextRoom = 0 
 	var finished = false
 	var movedOnce = false
@@ -238,7 +234,6 @@ func print_map():
 			place_map(pathName, x * room_w, y * room_h)
 	# print out the array 
 	for i in height:
-		print("y: ", i)
 		print(map[i])
 	emit_signal("mapDrawn")
 

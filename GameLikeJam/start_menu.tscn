@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://do81hyk665ubu"]
+
+[ext_resource type="FontFile" uid="uid://dg5murxaw568j" path="res://assets/font/tall.ttf" id="1_jwbto"]
+[ext_resource type="FontFile" uid="uid://cohdbmo2ld7om" path="res://assets/font/olde_english.ttf" id="2_ia0g5"]
+
+[sub_resource type="GDScript" id="GDScript_ndybt"]
+script/source = "extends CanvasLayer
+
+const world = preload(\"res://world/world.tscn\")
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_packed(world)
+"
+
+[node name="start-menu" type="CanvasLayer" unique_id=497046854]
+script = SubResource("GDScript_ndybt")
+
+[node name="Button" type="Button" parent="." unique_id=1893259982]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -14.0
+offset_right = 33.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_jwbto")
+theme_override_font_sizes/font_size = 19
+text = "start"
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=466451076]
+offset_left = 28.0
+offset_top = 20.0
+offset_right = 294.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("2_ia0g5")
+theme_override_font_sizes/font_size = 9
+text = "wolfenstein  like "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
