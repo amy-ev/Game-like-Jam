@@ -26,10 +26,6 @@ region = Rect2(128, 128, 64, 64)
 atlas = ExtResource("2_w1os4")
 region = Rect2(192, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_epsnb"]
-atlas = ExtResource("2_w1os4")
-region = Rect2(0, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w5fm"]
 atlas = ExtResource("2_w1os4")
 region = Rect2(0, 256, 64, 64)
@@ -139,9 +135,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_epsnb")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_4w5fm")
 }, {
 "duration": 1.0,
@@ -152,7 +145,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"bite",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 2.0,
@@ -250,16 +243,23 @@ animations = [{
 height = 1.7089722
 radius = 2.796875
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_rof5a"]
-height = 1.7106934
-radius = 0.67041016
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1os4"]
+radius = 0.38671875
+height = 1.7895508
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_w1os4"]
-size = Vector3(0.9259033, 1.6071777, 0.7619629)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x6gnr"]
+height = 1.8100586
+radius = 0.72314453
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w1os4"]
+height = 1.9984131
+radius = 0.46484375
 
 [node name="fox" type="CharacterBody3D" unique_id=1140301554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 collision_layer = 4
 collision_mask = 3
+slide_on_ceiling = false
 script = ExtResource("1_6ukp8")
 
 [node name="sprite" type="AnimatedSprite3D" parent="." unique_id=1932567919]
@@ -270,7 +270,9 @@ shaded = true
 alpha_cut = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_7frlh")
-animation = &"hurt"
+animation = &"bite"
+frame = 2
+frame_progress = 1.0
 
 [node name="wander_controller" parent="." unique_id=401173984 instance=ExtResource("3_x6gnr")]
 
@@ -292,8 +294,8 @@ debug_shape_custom_color = Color(0.7918749, 0.100432836, 3.85046e-07, 1)
 debug_shape_thickness = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1708258927]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8492806, 0)
-shape = SubResource("CylinderShape3D_rof5a")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9071419, 0)
+shape = SubResource("CapsuleShape3D_w1os4")
 
 [node name="fox_stats" parent="." unique_id=1664943031 instance=ExtResource("4_po0vf")]
 
@@ -302,13 +304,23 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape3D" parent="hurtbox" index="0" unique_id=1713672875]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03704834, 0.80822754, -0.029907227)
-shape = SubResource("BoxShape3D_w1os4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90621877, 0)
+shape = SubResource("CylinderShape3D_x6gnr")
+
+[node name="hitbox" type="Area3D" parent="." unique_id=87337483]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=555498197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.39119717)
+shape = SubResource("CylinderShape3D_w1os4")
+debug_color = Color(0, 0.6245712, 0.50750995, 0.8745098)
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="noHealth" from="fox_stats" to="." method="_on_fox_stats_no_health"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 
 [editable path="hurtbox"]

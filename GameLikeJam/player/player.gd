@@ -14,6 +14,7 @@ const TURN_SPEED = 0.05
 
 const HEAD_BOB_FREQ = 2.4
 const HEAD_BOB_AMP = 0.08
+
 var bob_time = 0.0
 var initial_cam_pos: Vector3
 
@@ -40,7 +41,8 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	CAMERA_CONTROLLER.make_current()
 	initial_cam_pos = CAMERA_CONTROLLER.transform.origin
-	print(initial_cam_pos)
+	Global.start_pos = global_position
+
 	healthChanged.emit(stats.health)
 
 func _physics_process(delta: float) -> void:
@@ -112,11 +114,10 @@ func _update_camera(delta):
 
 func _on_hurtbox_area_entered(area: Area3D) -> void:
 		if area.name == "hitbox":
-			print("ouch")
-			# get enemy name
-			# get enemy stats.damage
-			# -= damage_value
-			stats.health -= 10
+			var enemy = area.get_parent()
+			var enemy_name = str(enemy.name).rstrip("0123456789")
+			var damage_value = enemy.get_node(enemy_name + "_stats").damage
+			stats.health -= damage_value
 			healthChanged.emit(stats.health)
 
 func _headbob(time):
@@ -124,3 +125,11 @@ func _headbob(time):
 	pos.y += sin(time * HEAD_BOB_FREQ) * HEAD_BOB_AMP
 	pos.x += cos(time * HEAD_BOB_FREQ/2) * HEAD_BOB_AMP
 	return pos
+
+
+func _on_player_stats_no_health() -> void:
+	if Global.lives != 0:
+		Global.lives -= 1
+		global_position = Global.start_pos
+	else:
+		queue_free()

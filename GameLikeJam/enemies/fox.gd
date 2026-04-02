@@ -1,18 +1,20 @@
 extends CharacterBody3D
 
-#var player = null
-#@onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $sprite
 @onready var wander_controller = $wander_controller
 @onready var ray = $RayCast3D
 @onready var stats = $fox_stats
+@onready var hitbox = $hitbox
+
+
 var player: CharacterBody3D = null
 enum{
 	idle,
 	wander,
 	chase,
 	hurt,
-	dead
+	dead,
+	attack
 }
 
 var acceleration = 10
@@ -37,8 +39,10 @@ func _physics_process(delta: float) -> void:
 	if wander_controller.start_pos == null:
 		wander_controller.start_pos = position
 	
-	if state != hurt and state != dead:
+	if state != hurt and state != dead and state != attack:
 		seek_player()
+	
+	update_hitbox_direction()
 	
 	match state:
 		idle:
@@ -56,7 +60,8 @@ func _physics_process(delta: float) -> void:
 			if player_in_area:
 				velocity = velocity.move_toward(Vector3.ZERO,friction *delta)
 				var look_dir = global_position.direction_to(player.global_position)
-				facing_direction = look_dir
+				look_dir.y = 0
+				facing_direction = look_dir.normalized()
 				update_animation(Vector3.ZERO, delta)
 			else:
 				check_state()
@@ -68,6 +73,8 @@ func _physics_process(delta: float) -> void:
 		chase:
 			if player_detected:
 				var direction = global_position.direction_to(player.global_position)
+				direction.y = 0
+				direction = direction.normalized()
 				update_animation(direction, delta)
 			else:
 				state = idle
@@ -75,7 +82,10 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
 		dead:
 			velocity = Vector3.ZERO
+		attack:
+			pass
 	move_and_slide()
+
 	
 func check_state():
 	if wander_controller.get_time_left() == 0:
@@ -126,7 +136,13 @@ func get_animation_dir(dir):
 	else:
 		return "left"
 		
-
+func update_hitbox_direction():
+	if hitbox and facing_direction != Vector3.ZERO:
+		var look_dir = global_position + facing_direction
+		
+		look_dir.y = global_position.y
+		hitbox.look_at(look_dir, Vector3.UP)
+		
 func seek_player():
 	if player == null:
 		player_detected = false
@@ -176,7 +192,6 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 func _on_hurtbox_area_entered(area: Area3D) -> void:
 	if area.name == "hitbox":
 		if area.owner == player:
-			
 			var direction = (global_position - player.global_position).normalized()
 			velocity = direction * player.knockback
 			var damage_value = player.damage
@@ -195,5 +210,13 @@ func _on_fox_stats_no_health() -> void:
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "hurt" and state != dead:
 		state = idle
+	if sprite.animation == "bite" and state != dead:
+		state = idle
 	if sprite.animation == "death":
 		queue_free()
+
+
+func _on_hitbox_body_entered(body: Node3D) -> void:
+	state = attack
+	sprite.play("bite")
+	print("i see body")

@@ -1,10 +1,12 @@
 extends Node3D
 
 @onready var rooms = $rooms
-@onready var width = 4
-@onready var height = 4
-@onready var room_w = 51.2
-@onready var room_h = 51.2
+@onready var width = Global.width
+@onready var height = Global.height
+@onready var room_w = Global.room_w
+@onready var room_h = Global.room_h
+
+@onready var fox = preload("res://enemies/fox.tscn")
 
 var map = []
 var startPos = 0
@@ -12,6 +14,7 @@ var startPos = 0
 signal mapGenerated
 signal edgesGenerated
 signal mapDrawn
+signal enemiesSpawned
 
 
 func _ready() -> void:
@@ -22,7 +25,7 @@ func _ready() -> void:
 	await edgesGenerated
 	print_map()
 	await mapDrawn
-	
+	spawn_enemies()
 	var root = get_tree().get_root()
 	if root.has_node("/root/animation"):
 		var anim = root.get_node("/root/animation")
@@ -248,3 +251,27 @@ func place_map(path, offsetX, offsetY):
 	var instance = scene.instantiate()
 	instance.position = Vector3(offsetX, 0.0, offsetY)
 	rooms.add_child(instance)
+
+
+func enemy_inst(y,x):
+	for i in range(Global.enemy_number):
+		var new_enemy = fox.instantiate()
+		add_child(new_enemy)
+		new_enemy.name = "fox"
+		var global_y = y * room_h
+		var global_x = x * room_w
+		
+		new_enemy.position = Vector3(randi_range(global_x,global_x+room_w),0.0,randi_range(global_y,global_y+room_h))
+
+func spawn_enemies():
+	for y in range(height):
+		for x in width:
+			if map[y][x] == "S" || map[y][x] == "E":
+				pass
+			elif map[y][x] == "S.1" || map[y][x] == "E.1":
+				pass
+			elif map[y][x] == "S.2" || map[y][x] == "E.2":
+				pass
+			else:
+				enemy_inst(y,x)
+	emit_signal("enemiesSpawned")

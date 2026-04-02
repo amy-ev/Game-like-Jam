@@ -9,15 +9,16 @@
 height = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
-radius = 0.5908203
-height = 1.6274414
+radius = 0.52197266
+height = 1.5070801
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g1dw6"]
-size = Vector3(1, 1.6748657, 0.9063263)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qjkh3"]
+height = 1.6691895
+radius = 0.5654297
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yw30f"]
 height = 1.7269287
-radius = 0.86376953
+radius = 0.73046875
 
 [node name="player" type="CharacterBody3D" unique_id=1163194258 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25031465, 0)
@@ -32,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_sh265")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=554952032]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5637207, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50354004, 0)
 shape = SubResource("CapsuleShape3D_oul6g")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=269770132]
@@ -74,10 +75,9 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=1031591359]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5799981, -0.5655894)
-shape = SubResource("BoxShape3D_g1dw6")
-disabled = true
-debug_color = Color(0.93, 0.527, 0, 0.67058825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58012015, -0.604939)
+shape = SubResource("CylinderShape3D_qjkh3")
+debug_color = Color(0.93, 0.527, 0, 0.85490197)
 
 [node name="hurtbox" parent="." unique_id=1730025536 instance=ExtResource("4_yw30f")]
 collision_layer = 2
@@ -86,8 +86,10 @@ collision_mask = 4
 [node name="CollisionShape3D" parent="hurtbox" index="0" unique_id=1713672875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63079834, 0)
 shape = SubResource("CylinderShape3D_yw30f")
+debug_color = Color(0.8483788, 0.32783484, 0.48242027, 0.41960785)
 
 [connection signal="healthChanged" from="player_stats" to="gui" method="_on_player_stats_health_changed"]
+[connection signal="noHealth" from="player_stats" to="." method="_on_player_stats_no_health"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="hurtbox"]
