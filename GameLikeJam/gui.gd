@@ -18,4 +18,3 @@ func _on_points_collected(points:int):
 
 func _on_player_stats_health_changed() -> void:
 	health_label.text = str(Global.health)+ "%"
-	

@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://cheq7hn6b7k6l"]
+
+[ext_resource type="Texture2D" uid="uid://6lq02naqbitp" path="res://assets/animation-raccoon.png" id="1_ljyfo"]
+[ext_resource type="Texture2D" uid="uid://cmel1m7ctt5n6" path="res://assets/raccoon-baby-1.png" id="2_ij1m1"]
+[ext_resource type="Texture2D" uid="uid://cjc3x6tg6n8uq" path="res://assets/raccoon-baby-2.png" id="3_4b1b3"]
+
+[sub_resource type="GDScript" id="GDScript_ljyfo"]
+script/source = "extends CanvasLayer
+
+const world = preload(\"res://world/world.tscn\")
+
+func _start_game():
+	var tree = get_tree()
+	var current_scene = tree.get_current_scene()
+	var game = world.instantiate()
+	tree.get_root().add_child(game)
+"
+
+[sub_resource type="Animation" id="Animation_vpcml"]
+length = 12.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8, 1.1, 1.3, 2, 2.6, 2.8, 3.5, 5.2000003, 5.4000006, 6, 6.3000007, 7.8000007, 8, 8.6, 8.900001, 10.9, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.23076928), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.7, 2.7, 3.5, 4.200001, 5.3000007, 6.3000007, 6.7000003, 7.9000006, 8.5, 8.900001, 9.3, 9.7, 10.1, 10.5, 10.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 2, 0, 1, 2, 0, 1, 2, 3, 2, 3, 2, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("baby-1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.4000006),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("baby-2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(12),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_start_game"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sryvc"]
+resource_name = "wakeup"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2eta1"]
+_data = {
+&"RESET": SubResource("Animation_vpcml"),
+&"wakeup": SubResource("Animation_sryvc")
+}
+
+[node name="animation" type="CanvasLayer" unique_id=632642105]
+script = SubResource("GDScript_ljyfo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1186513090]
+texture = ExtResource("1_ljyfo")
+centered = false
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=602700623]
+libraries/ = SubResource("AnimationLibrary_2eta1")
+autoplay = &"RESET"
+
+[node name="baby-1" type="Sprite2D" parent="." unique_id=1610663155]
+texture = ExtResource("2_ij1m1")
+centered = false
+
+[node name="baby-2" type="Sprite2D" parent="." unique_id=1658857028]
+texture = ExtResource("3_4b1b3")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=631541134]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

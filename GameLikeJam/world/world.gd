@@ -21,7 +21,13 @@ func _ready() -> void:
 	define_edges()
 	await edgesGenerated
 	print_map()
-
+	await mapDrawn
+	
+	var root = get_tree().get_root()
+	if root.has_node("/root/animation"):
+		var anim = root.get_node("/root/animation")
+		root.remove_child(anim)
+		
 func generate_path():
 	# ensure a path from start room to end room is created
 	# clearing the grid
