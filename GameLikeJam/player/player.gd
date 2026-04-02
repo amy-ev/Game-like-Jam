@@ -123,5 +123,4 @@ func _headbob(time):
 	var pos = initial_cam_pos
 	pos.y += sin(time * HEAD_BOB_FREQ) * HEAD_BOB_AMP
 	pos.x += cos(time * HEAD_BOB_FREQ/2) * HEAD_BOB_AMP
-	print(pos)
 	return pos

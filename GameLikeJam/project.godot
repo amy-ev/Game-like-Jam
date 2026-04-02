@@ -93,7 +93,7 @@ interact={
 3d_physics/layer_3="enemies"
 3d_physics/layer_4="interactive"
 3d_physics/layer_5="item"
-3d_physics/layer_6="hitbox"
+3d_physics/layer_6="baby"
 3d_physics/layer_7="hurtbox"
 
 [physics]

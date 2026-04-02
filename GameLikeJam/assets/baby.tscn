@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://d0sthxk2c7bu2"]
+
+[ext_resource type="Texture2D" uid="uid://bgw217m311s40" path="res://assets/baby-0.png" id="1_i3fxw"]
+
+[sub_resource type="GDScript" id="GDScript_i3fxw"]
+script/source = "extends CharacterBody3D
+
+var detected := false
+var collected := false
+
+@onready var sprite = $sprite
+
+func _ready() -> void:
+	sprite.texture = load(str(\"res://assets/baby-\"+ str(randi_range(0,1)) + \".png\"))
+	
+func _input(event: InputEvent) -> void:
+	if detected and !collected:
+		if event.is_action_pressed(\"interact\"):
+			collected = true
+			queue_free()
+
+func _on_detection_body_entered(body: Node3D) -> void:
+	if body.is_in_group(\"player\"):
+		detected = true
+		print(\"in area\")
+		
+func _on_detection_body_exited(body: Node3D) -> void:
+	if body.is_in_group(\"player\"):
+		detected = false
+		print(\"left\")
+		if collected:
+			pass
+"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_co81w"]
+height = 0.69677734
+radius = 0.22753906
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yjn5r"]
+height = 0.6928711
+radius = 1.1826172
+
+[node name="baby" type="CharacterBody3D" unique_id=169811148]
+collision_layer = 32
+collision_mask = 2
+script = SubResource("GDScript_i3fxw")
+
+[node name="sprite" type="Sprite3D" parent="." unique_id=556898688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34, 0)
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_i3fxw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=383395480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34838867, 0)
+shape = SubResource("CylinderShape3D_co81w")
+
+[node name="detection" type="Area3D" parent="." unique_id=1941374284]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detection" unique_id=1815649494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34399414, 0)
+shape = SubResource("CylinderShape3D_yjn5r")
+debug_color = Color(0.9382292, 1.5690624e-05, 0.62672657, 0.41960785)
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
