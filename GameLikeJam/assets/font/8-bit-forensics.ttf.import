@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dg5murxaw568j"
-path="res://.godot/imported/tall.ttf-e637e5560d168c72eac565fcf098d32b.fontdata"
+uid="uid://cyltpnbsvujls"
+path="res://.godot/imported/8-bit-forensics.ttf-ac003a735ef2099a20d59963f6207557.fontdata"
 
 [deps]
 
-source_file="res://assets/font/tall.ttf"
-dest_files=["res://.godot/imported/tall.ttf-e637e5560d168c72eac565fcf098d32b.fontdata"]
+source_file="res://assets/font/8-bit-forensics.ttf"
+dest_files=["res://.godot/imported/8-bit-forensics.ttf-ac003a735ef2099a20d59963f6207557.fontdata"]
 
 [params]
 

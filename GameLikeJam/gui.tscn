@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://c30nc57s6mgnu"]
 
 [ext_resource type="Texture2D" uid="uid://4cmeca4w2h2e" path="res://assets/ui-panel.png" id="1_lgo0l"]
-[ext_resource type="Script" uid="uid://ska28t6q4xoa" path="res://world/gui.gd" id="1_uj22v"]
+[ext_resource type="Script" uid="uid://ska28t6q4xoa" path="res://gui.gd" id="1_uj22v"]
 [ext_resource type="Texture2D" uid="uid://cy86q2n8yy03j" path="res://assets/player-avatar.png" id="2_uj22v"]
+[ext_resource type="FontFile" uid="uid://cyltpnbsvujls" path="res://assets/font/8-bit-forensics.ttf" id="3_67jta"]
 [ext_resource type="Texture2D" uid="uid://5b44iu865x7t" path="res://assets/player-avatar-bite.png" id="3_wcm0j"]
 [ext_resource type="Texture2D" uid="uid://daurbe7qi2438" path="res://assets/scratch.png" id="4_nl0n6"]
 [ext_resource type="Texture2D" uid="uid://b121hie4g3gx6" path="res://assets/bite.png" id="4_pn8sv"]
 [ext_resource type="Texture2D" uid="uid://d15hq2pefcohy" path="res://assets/arm.png" id="6_wll1r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl0n6"]
+content_margin_left = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pn8sv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wll1r"]
+content_margin_left = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia8ra"]
 atlas = ExtResource("3_wcm0j")
@@ -192,13 +195,13 @@ script = ExtResource("1_uj22v")
 
 [node name="gui" type="NinePatchRect" parent="." unique_id=828133794]
 clip_contents = true
-custom_minimum_size = Vector2(320, 64)
+custom_minimum_size = Vector2(320, 56)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
+offset_top = -53.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_lgo0l")
@@ -210,7 +213,7 @@ patch_margin_bottom = 8
 [node name="panel" type="MarginContainer" parent="gui" unique_id=2014012353]
 layout_mode = 0
 offset_right = 320.0
-offset_bottom = 64.0
+offset_bottom = 56.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -230,13 +233,23 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="gui/panel/HBoxContainer/level/VBoxContainer" unique_id=314215864]
 layout_mode = 2
-theme_override_font_sizes/font_size = 6
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.6, 0.5647059, 0.54509807, 0.95686275)
+theme_override_fonts/font = ExtResource("3_67jta")
+theme_override_font_sizes/font_size = 11
 text = "LEVEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="level" type="Label" parent="gui/panel/HBoxContainer/level/VBoxContainer" unique_id=1599154052]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9607843, 0.92941177, 0.92156863, 1)
+theme_override_fonts/font = ExtResource("3_67jta")
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="score" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1032070076]
 custom_minimum_size = Vector2(57, 0)
@@ -248,28 +261,49 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="gui/panel/HBoxContainer/score/VBoxContainer" unique_id=1364979807]
 layout_mode = 2
-theme_override_font_sizes/font_size = 6
+theme_override_colors/font_color = Color(0.6, 0.5647059, 0.54509807, 0.95686275)
+theme_override_fonts/font = ExtResource("3_67jta")
+theme_override_font_sizes/font_size = 11
 text = "SCORE"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="points" type="Label" parent="gui/panel/HBoxContainer/score/VBoxContainer" unique_id=43326319]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
+theme_override_colors/font_color = Color(0.9607843, 0.92941177, 0.92156863, 1)
+theme_override_fonts/font = ExtResource("3_67jta")
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 3
 
 [node name="lives" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1239573808]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wll1r")
 
-[node name="Label" type="Label" parent="gui/panel/HBoxContainer/lives" unique_id=788625110]
+[node name="VBoxContainer" type="VBoxContainer" parent="gui/panel/HBoxContainer/lives" unique_id=144772164]
 layout_mode = 2
-text = "3"
+
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/lives/VBoxContainer" unique_id=788625110]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.6, 0.5647059, 0.54509807, 0.95686275)
+theme_override_fonts/font = ExtResource("3_67jta")
+theme_override_font_sizes/font_size = 11
+text = "LIVES"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="lives" type="Label" parent="gui/panel/HBoxContainer/lives/VBoxContainer" unique_id=1433410956]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9607843, 0.92941177, 0.92156863, 1)
+theme_override_fonts/font = ExtResource("3_67jta")
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="avatar" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=720592192]
 custom_minimum_size = Vector2(48, 0)
@@ -289,11 +323,28 @@ custom_minimum_size = Vector2(58, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wcm0j")
 
-[node name="Label" type="Label" parent="gui/panel/HBoxContainer/health" unique_id=1812340044]
+[node name="VBoxContainer" type="VBoxContainer" parent="gui/panel/HBoxContainer/health" unique_id=429681054]
 layout_mode = 2
-text = "4"
+
+[node name="Label" type="Label" parent="gui/panel/HBoxContainer/health/VBoxContainer" unique_id=1812340044]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.5647059, 0.54509807, 0.95686275)
+theme_override_fonts/font = ExtResource("3_67jta")
+theme_override_font_sizes/font_size = 11
+text = "HEALTH"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="health" type="Label" parent="gui/panel/HBoxContainer/health/VBoxContainer" unique_id=1446367707]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9607843, 0.92941177, 0.92156863, 1)
+theme_override_fonts/font = ExtResource("3_67jta")
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="goal" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1225673500]
 custom_minimum_size = Vector2(64, 0)
@@ -302,6 +353,8 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_t4hft")
 
 [node name="Label" type="Label" parent="gui/panel/HBoxContainer/goal" unique_id=1806187093]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.5647059, 0.54509807, 0.95686275)
+theme_override_fonts/font = ExtResource("3_67jta")
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -326,7 +379,7 @@ sprite_frames = SubResource("SpriteFrames_t4hft")
 autoplay = "default"
 
 [node name="arm" type="AnimatedSprite2D" parent="." unique_id=1628632496]
-position = Vector2(230, 120)
+position = Vector2(230, 128)
 sprite_frames = SubResource("SpriteFrames_xdtak")
 animation = &"scratch"
 autoplay = "default"

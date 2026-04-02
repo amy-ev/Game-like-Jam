@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://do81hyk665ubu"]
 
-[ext_resource type="FontFile" uid="uid://dg5murxaw568j" path="res://assets/font/tall.ttf" id="1_jwbto"]
-[ext_resource type="FontFile" uid="uid://cohdbmo2ld7om" path="res://assets/font/olde_english.ttf" id="2_ia0g5"]
+[ext_resource type="Texture2D" uid="uid://hf4bhde7lvrg" path="res://assets/start-screen.png" id="2_vpdu5"]
+[ext_resource type="Texture2D" uid="uid://d2mhfq30f16rl" path="res://assets/title.png" id="3_v2mkm"]
+[ext_resource type="FontFile" uid="uid://cyltpnbsvujls" path="res://assets/font/8-bit-forensics.ttf" id="3_vpdu5"]
 
 [sub_resource type="GDScript" id="GDScript_ndybt"]
 script/source = "extends CanvasLayer
@@ -12,35 +13,130 @@ func _on_button_pressed() -> void:
 	get_tree().change_scene_to_packed(world)
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctwoq"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(0, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppfnh"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(320, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7boi2"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(640, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgi0o"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(960, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73a2t"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(1280, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsckg"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(1600, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfl6h"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(1920, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kefd2"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(2240, 0, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acoh7"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(0, 240, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p4e4"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(320, 240, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxkec"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(640, 240, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ld0yp"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(960, 240, 320, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8jvl"]
+atlas = ExtResource("3_v2mkm")
+region = Rect2(1280, 240, 320, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y6t8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctwoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppfnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7boi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgi0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73a2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsckg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfl6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kefd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acoh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p4e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxkec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ld0yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8jvl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
 [node name="start-menu" type="CanvasLayer" unique_id=497046854]
 script = SubResource("GDScript_ndybt")
 
-[node name="Button" type="Button" parent="." unique_id=1893259982]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.5
-offset_top = -14.0
-offset_right = 33.5
-offset_bottom = 14.0
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2082425698]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_jwbto")
-theme_override_font_sizes/font_size = 19
-text = "start"
-icon_alignment = 1
+texture = ExtResource("2_vpdu5")
 
-[node name="Label" type="Label" parent="." unique_id=466451076]
-offset_left = 28.0
-offset_top = 20.0
-offset_right = 294.0
-offset_bottom = 43.0
-theme_override_fonts/font = ExtResource("2_ia0g5")
-theme_override_font_sizes/font_size = 9
-text = "wolfenstein  like "
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1020156019]
+sprite_frames = SubResource("SpriteFrames_8y6t8")
+autoplay = "default"
+frame_progress = 0.3339684
+centered = false
+
+[node name="Button" type="Button" parent="." unique_id=1893259982]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_vpdu5")
+theme_override_font_sizes/font_size = 16
+text = "START"
+icon_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

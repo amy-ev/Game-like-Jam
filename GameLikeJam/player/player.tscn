@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cfldejg6v8k3y"]
 
 [ext_resource type="Script" uid="uid://d0e3df65glqoi" path="res://player/player.gd" id="1_4flbx"]
-[ext_resource type="PackedScene" uid="uid://c30nc57s6mgnu" path="res://world/gui.tscn" id="2_rkbax"]
+[ext_resource type="PackedScene" uid="uid://c30nc57s6mgnu" path="res://gui.tscn" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://dpvjleqlibc7a" path="res://player/player_stats.gd" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://6mw7wc6hqmhw" path="res://enemies/hurtbox.tscn" id="4_yw30f"]
 
@@ -80,11 +80,14 @@ disabled = true
 debug_color = Color(0.93, 0.527, 0, 0.67058825)
 
 [node name="hurtbox" parent="." unique_id=1730025536 instance=ExtResource("4_yw30f")]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape3D" parent="hurtbox" index="0" unique_id=1713672875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63079834, 0)
 shape = SubResource("CylinderShape3D_yw30f")
 
+[connection signal="healthChanged" from="player_stats" to="gui" method="_on_player_stats_health_changed"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="hurtbox"]

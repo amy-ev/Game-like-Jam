@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var attack_sprite:= $"gui/attack-sprite"
 @onready var arm:= $gui/arm
 @onready var hitbox = $hitbox/CollisionShape3D
+@onready var stats = $player_stats
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
@@ -28,10 +29,13 @@ var _light_rotation : Vector3
 var knockback = 15
 var damage = 10
 
+signal healthChanged
+
 func _ready():
 	Global.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	CAMERA_CONTROLLER.make_current()
+	healthChanged.emit(stats.health)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -105,4 +109,9 @@ func _update_camera(delta):
 
 func _on_hurtbox_area_entered(area: Area3D) -> void:
 		if area.name == "hitbox":
-			print("oh my")
+			print("ouch")
+			# get enemy name
+			# get enemy stats.damage
+			# -= damage_value
+			stats.health -= 10
+			healthChanged.emit(stats.health)
