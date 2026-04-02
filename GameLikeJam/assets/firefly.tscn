@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://dpkecmjwcimri"]
+
+[ext_resource type="Texture2D" uid="uid://b2wquui5kfekt" path="res://assets/firefly.png" id="1_5n5vt"]
+
+[sub_resource type="Animation" id="Animation_5n5vt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.45963466, -0.10211745)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.29873186, 0.04796499)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4091152, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8udjb"]
+resource_name = "float"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.45963466, -0.10211745), Vector3(0, 0.4133116, -0.10211745), Vector3(0, 0.45963466, -0.13361698), Vector3(0, 0.4876505, -0.0769178)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.29873186, 0.04796499), Vector3(0, 0.3442538, 0.04796499), Vector3(0, 0.32718307, 0.08793354)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.4091152, 0), Vector3(0, 0.3680665, 0), Vector3(0, 0.38448596, -0.027719587)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65b5r"]
+_data = {
+&"RESET": SubResource("Animation_5n5vt"),
+&"float": SubResource("Animation_8udjb")
+}
+
+[node name="firefly" type="CharacterBody3D" unique_id=1194372951]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=450778360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4091152, 0)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_5n5vt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2124437807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36500418, 0)
+light_color = Color(0.8041459, 0.5817348, 0.04853452, 1)
+light_indirect_energy = 2.0
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=923213700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45963466, -0.10211745)
+pixel_size = 0.005
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_5n5vt")
+
+[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=371643852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29873186, 0.04796499)
+pixel_size = 0.005
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_5n5vt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=517191515]
+libraries/ = SubResource("AnimationLibrary_65b5r")
+autoplay = &"float"
