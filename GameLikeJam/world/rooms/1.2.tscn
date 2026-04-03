@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b62bb7d7dkwoe" path="res://assets/lamp.tscn" id="13_31kfv"]
 [ext_resource type="PackedScene" uid="uid://cw4isogr7un76" path="res://assets/bin.tscn" id="14_cookn"]
 [ext_resource type="PackedScene" uid="uid://3rbs7528kwdw" path="res://assets/trash.tscn" id="15_oo2hu"]
+[ext_resource type="PackedScene" uid="uid://dpkecmjwcimri" path="res://assets/firefly.tscn" id="15_ygyfl"]
 [ext_resource type="PackedScene" uid="uid://c1omfm7rdy3f4" path="res://assets/food.tscn" id="16_f1hpy"]
 [ext_resource type="PackedScene" uid="uid://0872qi1edtb2" path="res://assets/door.tscn" id="17_vh00j"]
 
@@ -156,10 +157,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9255123, 0.2, 17.70636)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.11278, 0, -11.794561)
 
 [node name="lamp" parent="decor" unique_id=1542482093 instance=ExtResource("13_31kfv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6620793, 0, -20.6258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.662, 0.1, -20.626)
 
 [node name="lamp3" parent="decor" unique_id=1891125593 instance=ExtResource("13_31kfv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6620793, 0, -4.6011925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.662, 0.1, -4.601)
 
 [node name="large-bin2" parent="decor" unique_id=1675717933 instance=ExtResource("12_c1cbu")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.212284, 0, -15.0682)
@@ -172,6 +173,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.674041, 0, -1.3776822)
 
 [node name="bin2" parent="decor" unique_id=801179011 instance=ExtResource("14_cookn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.806458, 0, 7.732276)
+
+[node name="firefly" parent="decor" unique_id=1593470202 instance=ExtResource("15_ygyfl")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20.162354, 1.1807861, 11.641208)
+
+[node name="firefly2" parent="decor" unique_id=1979341011 instance=ExtResource("15_ygyfl")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -14.748051, 2.635254, 7.878866)
+
+[node name="firefly3" parent="decor" unique_id=499140175 instance=ExtResource("15_ygyfl")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.848389, 1.1807861, 16.540497)
+
+[node name="firefly4" parent="decor" unique_id=744959322 instance=ExtResource("15_ygyfl")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.894653, 1.1807861, -14.19281)
 
 [node name="items" type="Node3D" parent="." unique_id=852813545]
 
@@ -204,6 +217,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.716774, 0, 1.977787)
 
 [node name="food2" parent="items" unique_id=373954361 instance=ExtResource("16_f1hpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.729206, 0, 11.383312)
+
+[node name="food3" parent="items" unique_id=530030666 instance=ExtResource("16_f1hpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.776636, 0, 14.250037)
+
+[node name="trash9" parent="items" unique_id=23356968 instance=ExtResource("15_oo2hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.783691, 0, -9.314568)
+
+[node name="trash10" parent="items" unique_id=1371628322 instance=ExtResource("15_oo2hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.745483, 0, -7.343834)
+
+[node name="trash11" parent="items" unique_id=1610310133 instance=ExtResource("15_oo2hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.342773, 0, -13.972847)
+
+[node name="trash12" parent="items" unique_id=1395629291 instance=ExtResource("15_oo2hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.00293, 0, -15.32473)
 
 [node name="door" parent="." unique_id=1968578777 instance=ExtResource("17_vh00j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4015274, 0, 4.026643)

@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b62bb7d7dkwoe" path="res://assets/lamp.tscn" id="12_v7kq2"]
 [ext_resource type="PackedScene" uid="uid://cw4isogr7un76" path="res://assets/bin.tscn" id="13_mc2tw"]
 [ext_resource type="PackedScene" uid="uid://3rbs7528kwdw" path="res://assets/trash.tscn" id="15_gcjlk"]
+[ext_resource type="PackedScene" uid="uid://dpkecmjwcimri" path="res://assets/firefly.tscn" id="15_j5cmo"]
 [ext_resource type="PackedScene" uid="uid://c1omfm7rdy3f4" path="res://assets/food.tscn" id="16_2xnxf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ppyta"]
@@ -131,13 +132,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.012236, 0.2, 11.172298)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.11278, 0, -12.797026)
 
 [node name="lamp" parent="decor" unique_id=1542482093 instance=ExtResource("12_v7kq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6620793, 0, -20.6258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.662, 0.1, -20.626)
 
 [node name="lamp2" parent="decor" unique_id=900989807 instance=ExtResource("12_v7kq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6620793, 0, 12.656073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.662, 0.1, 12.656)
 
 [node name="lamp3" parent="decor" unique_id=1891125593 instance=ExtResource("12_v7kq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6620793, 0, -4.6011925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.662, 0.1, -4.601)
 
 [node name="large-bin2" parent="decor" unique_id=1675717933 instance=ExtResource("8_0f4je")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17.212284, 0, -15.0682)
@@ -150,6 +151,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.674041, 0, -1.3776822)
 
 [node name="bin2" parent="decor" unique_id=801179011 instance=ExtResource("13_mc2tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9284067, 0, 14.158056)
+
+[node name="firefly" parent="decor" unique_id=1593470202 instance=ExtResource("15_j5cmo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.831163, 2.6038103, 3.4026732)
+
+[node name="firefly2" parent="decor" unique_id=2087639183 instance=ExtResource("15_j5cmo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.942108, 3.4501276, -14.328196)
+
+[node name="firefly3" parent="decor" unique_id=784489336 instance=ExtResource("15_j5cmo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -21.573689, 3.546815, -15.211134)
+
+[node name="firefly4" parent="decor" unique_id=1474939713 instance=ExtResource("15_j5cmo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.96446, 1.9342189, 18.389109)
 
 [node name="items" type="Node3D" parent="." unique_id=852813545]
 
@@ -182,3 +195,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.716774, 0, 1.977787)
 
 [node name="food2" parent="items" unique_id=373954361 instance=ExtResource("16_2xnxf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.729206, 0, 11.383312)
+
+[node name="trash9" parent="items" unique_id=277645446 instance=ExtResource("15_gcjlk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.812683, 0, -10.518797)
+
+[node name="trash10" parent="items" unique_id=2060130451 instance=ExtResource("15_gcjlk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.331327, 0, -15.20727)
+
+[node name="food3" parent="items" unique_id=261707468 instance=ExtResource("16_2xnxf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.290894, 0, 21.549143)
