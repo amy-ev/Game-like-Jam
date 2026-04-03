@@ -18,9 +18,12 @@ func _on_body_entered(body: Node3D) -> void:
 					Global.emit_signal("pointsCollected",10)
 
 				"food":
+
 					var stats = body.get_node("player_stats")
-					stats.health += 10
-					print(stats.health)
+					if stats.health < stats.max_health:
+						stats.health += 10
+						body.healthChanged.emit(stats.health)
+					
 					
 			collected = true
 			queue_free()

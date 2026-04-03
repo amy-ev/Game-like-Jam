@@ -30,6 +30,9 @@ func _ready() -> void:
 	if root.has_node("/root/animation"):
 		var anim = root.get_node("/root/animation")
 		root.remove_child(anim)
+	if root.has_node("/root/transition"):
+		var anim = root.get_node("/root/transition")
+		root.remove_child(anim)
 		
 func generate_path():
 	# ensure a path from start room to end room is created

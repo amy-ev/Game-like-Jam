@@ -5,6 +5,8 @@
 [sub_resource type="GDScript" id="GDScript_i3fxw"]
 script/source = "extends CharacterBody3D
 
+
+
 var detected := false
 var collected := false
 
@@ -17,8 +19,10 @@ func _input(event: InputEvent) -> void:
 	if detected and !collected:
 		if event.is_action_pressed(\"interact\"):
 			collected = true
-			queue_free()
-
+			visible=false
+			Global.level +=1
+			get_tree().get_root().add_child(load(\"res://assets/transition.tscn\").instantiate())
+			
 func _on_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group(\"player\"):
 		detected = true

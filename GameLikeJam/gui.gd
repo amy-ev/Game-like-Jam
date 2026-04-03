@@ -10,7 +10,8 @@ func _ready() -> void:
 	get_node("attack-sprite").play("default")
 	level_label.text = str(Global.level)
 	lives_label.text = str(Global.lives)
-	health_label.text = "100%"
+	points_label.text = str(Global.points)
+	health_label.text = str(Global.player_max_health) + "%"
 	
 func _on_points_collected(points:int):
 	Global.points += points

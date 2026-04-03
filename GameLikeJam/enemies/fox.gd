@@ -49,7 +49,8 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
 			if player_in_area:
 				var look_dir = global_position.direction_to(player.global_position)
-				facing_direction = look_dir
+				if look_dir.length_squared() > 0.01:
+					facing_direction = look_dir
 				update_animation(Vector3.ZERO, delta)
 			else:
 				update_animation(Vector3.ZERO, delta)
@@ -60,8 +61,9 @@ func _physics_process(delta: float) -> void:
 			if player_in_area:
 				velocity = velocity.move_toward(Vector3.ZERO,friction *delta)
 				var look_dir = global_position.direction_to(player.global_position)
-				look_dir.y = 0
-				facing_direction = look_dir.normalized()
+				if look_dir.length_squared() > 0.01:
+					look_dir.y = 0
+					facing_direction = look_dir.normalized()
 				update_animation(Vector3.ZERO, delta)
 			else:
 				check_state()
@@ -137,11 +139,14 @@ func get_animation_dir(dir):
 		return "left"
 		
 func update_hitbox_direction():
-	if hitbox and facing_direction != Vector3.ZERO:
-		var look_dir = global_position + facing_direction
+	if hitbox == null:
+		return
+	if facing_direction.length_squared() <0.01:
+		return
+	var look_dir = global_position + facing_direction
 		
-		look_dir.y = global_position.y
-		hitbox.look_at(look_dir, Vector3.UP)
+	look_dir.y = global_position.y
+	hitbox.look_at(look_dir, Vector3.UP)
 		
 func seek_player():
 	if player == null:
