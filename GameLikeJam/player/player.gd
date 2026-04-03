@@ -182,4 +182,5 @@ func _on_player_stats_no_health() -> void:
 
 
 func _on_points_collected(points):
-	chitter.play()
+	if is_inside_tree() and chitter and chitter.is_inside_tree():
+		chitter.play()
