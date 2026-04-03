@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var ray = $RayCast3D
 @onready var stats = $fox_stats
 @onready var hitbox = $hitbox
+@onready var collision_anim = $hitbox/collision_player
 
 
 var player: CharacterBody3D = null
@@ -144,7 +145,7 @@ func update_hitbox_direction():
 		return
 	if facing_direction.length_squared() <0.01:
 		return
-	var look_dir = global_position + facing_direction
+	var look_dir = global_position + (facing_direction*10.0)
 		
 	look_dir.y = global_position.y
 	hitbox.look_at(look_dir, Vector3.UP)
@@ -187,7 +188,6 @@ func seek_player():
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == player:
-		print("hello")
 		player_in_area = true
 		
 func _on_area_3d_body_exited(body: Node3D) -> void:
@@ -206,7 +206,6 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 				return
 			state = hurt
 			sprite.play("hurt")
-			print(stats.health)
 
 
 func _on_fox_stats_no_health() -> void:
@@ -215,8 +214,10 @@ func _on_fox_stats_no_health() -> void:
 
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "hurt" and state != dead:
+		collision_anim.play("RESET")
 		state = idle
 	if sprite.animation == "bite" and state != dead:
+		collision_anim.play("RESET")
 		state = idle
 	if sprite.animation == "death":
 		queue_free()
@@ -225,4 +226,4 @@ func _on_sprite_animation_finished() -> void:
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	state = attack
 	sprite.play("bite")
-	print("i see body")
+	collision_anim.play("bite")

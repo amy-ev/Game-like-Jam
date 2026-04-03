@@ -7,7 +7,6 @@ var collected := false
 
 	
 func _on_body_entered(body: Node3D) -> void:
-	print(body)
 	if body.is_in_group("player"):
 		detected = true
 	
@@ -21,7 +20,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 					var stats = body.get_node("player_stats")
 					if stats.health < stats.max_health:
-						stats.health += 10
+						stats.health += 20
 						body.healthChanged.emit(stats.health)
 					
 					

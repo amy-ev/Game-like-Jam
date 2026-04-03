@@ -253,7 +253,44 @@ radius = 0.6489258
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w1os4"]
 height = 1.9984131
-radius = 0.46484375
+radius = 0.36914063
+
+[sub_resource type="Animation" id="Animation_w1os4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_x6gnr"]
+resource_name = "bite"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_po0vf"]
+_data = {
+&"RESET": SubResource("Animation_w1os4"),
+&"bite": SubResource("Animation_x6gnr")
+}
 
 [node name="fox" type="CharacterBody3D" unique_id=1140301554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
@@ -284,7 +321,7 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1188437510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.347931, 0)
 shape = SubResource("CylinderShape3D_fw1ev")
-debug_color = Color(0.9651857, 6.738305e-07, 0.49114835, 0.41960785)
+debug_color = Color(0.6275307, 0.4630261, 0.6899656, 0.41960785)
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=240524507]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.0575386, 0)
@@ -312,9 +349,13 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=555498197]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.39119717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.40766928)
 shape = SubResource("CylinderShape3D_w1os4")
-debug_color = Color(0, 0.6245712, 0.50750995, 0.8745098)
+debug_color = Color(0.9756195, 0, 0.32436496, 1)
+
+[node name="collision_player" type="AnimationPlayer" parent="hitbox" unique_id=1444136835]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_po0vf")
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

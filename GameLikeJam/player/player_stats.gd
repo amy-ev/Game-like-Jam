@@ -14,7 +14,6 @@ signal maxHealthChanged
 	set(value):
 		health = value
 		Global.health = health
-		print(health)
 		if health <= 30:
 			player.avatar_h_blood.play("30")
 			player.avatar_l_blood.play("100")
