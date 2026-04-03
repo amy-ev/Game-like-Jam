@@ -5,11 +5,14 @@
 [sub_resource type="GDScript" id="GDScript_ughat"]
 script/source = "extends ColorRect
 
-
+func _ready() -> void:
+	Global.died = true
+	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			Global.died = false
 			queue_free()
 "
 

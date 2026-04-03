@@ -41,6 +41,8 @@ var _light_rotation : Vector3
 var knockback = 15
 var damage = 10
 
+var is_attacking:= false
+
 signal healthChanged
 
 func _ready():
@@ -59,7 +61,9 @@ func _physics_process(delta: float) -> void:
 	if attack_sprite.animation == "scratch":
 		if attack_sprite.frame == 1:
 			hitbox.disabled = true
-			
+	if Global.died:
+		return
+	
 
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -84,12 +88,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		_rotation_input = -event.relative.x * MOUSE_SENSITIVITY
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
 		
-	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		hitbox.disabled = false
-		play_attack_animations()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if not is_attacking:
+			play_attack_animations()
 	
 	
 func play_attack_animations():
+	is_attacking = true
+	hitbox.disabled = false
+	
 	attack_sprite.play("scratch")
 	if stats.health <= 30:
 		avatar_h_blood.play("30_attack")
@@ -100,6 +107,10 @@ func play_attack_animations():
 	arm.play("scratch")
 	avatar.play("attack")
 	await avatar.animation_finished
+	
+	is_attacking = false
+	hitbox.disabled = true
+	
 	avatar.play("look-around")
 	if stats.health <= 30:
 		avatar_h_blood.play("30")
@@ -157,6 +168,7 @@ func _on_player_stats_no_health() -> void:
 	if Global.lives > 0:
 		global_position = Global.start_pos
 		gui.add_child(you_died.instantiate())
+
 		stats.health = stats.max_health
 		healthChanged.emit(stats.health)
 	else:

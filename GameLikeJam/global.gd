@@ -6,6 +6,7 @@ var room_h = 51.2
 var width = 4
 var height = 4
 
+var died:=false
 var raccoon_vision = false
 var player: CharacterBody3D = null
 var points: int
