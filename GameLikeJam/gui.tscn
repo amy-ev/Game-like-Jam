@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://5b44iu865x7t" path="res://assets/player-avatar-bite.png" id="3_wcm0j"]
 [ext_resource type="Texture2D" uid="uid://daurbe7qi2438" path="res://assets/scratch.png" id="4_nl0n6"]
 [ext_resource type="Texture2D" uid="uid://b121hie4g3gx6" path="res://assets/bite.png" id="4_pn8sv"]
+[ext_resource type="Texture2D" uid="uid://c11eavala3rm5" path="res://assets/heavy_blood.png" id="6_axmix"]
+[ext_resource type="Texture2D" uid="uid://bvvkiu4aoqfa5" path="res://assets/light_blood.png" id="6_p8208"]
 [ext_resource type="Texture2D" uid="uid://d15hq2pefcohy" path="res://assets/arm.png" id="6_wll1r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl0n6"]
@@ -59,6 +61,84 @@ animations = [{
 "loop": true,
 "name": &"look-around",
 "speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbet0"]
+atlas = ExtResource("6_axmix")
+region = Rect2(672, 0, 336, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e23it"]
+atlas = ExtResource("6_axmix")
+region = Rect2(0, 0, 336, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl6be"]
+atlas = ExtResource("6_axmix")
+region = Rect2(336, 0, 336, 336)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbet0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbet0")
+}],
+"loop": true,
+"name": &"100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e23it")
+}],
+"loop": true,
+"name": &"30",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl6be")
+}],
+"loop": false,
+"name": &"30_attack",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k81xp"]
+atlas = ExtResource("6_p8208")
+region = Rect2(672, 0, 336, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axmix"]
+atlas = ExtResource("6_p8208")
+region = Rect2(0, 0, 336, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u6ry"]
+atlas = ExtResource("6_p8208")
+region = Rect2(336, 0, 336, 336)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e23it"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k81xp")
+}],
+"loop": true,
+"name": &"100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axmix")
+}],
+"loop": true,
+"name": &"50",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u6ry")
+}],
+"loop": false,
+"name": &"50_attack",
+"speed": 3.0
 }]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wcm0j"]
@@ -314,9 +394,22 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_wll1r")
 position = Vector2(24, 24)
 scale = Vector2(0.143, 0.143)
 sprite_frames = SubResource("SpriteFrames_pn8sv")
-animation = &"attack"
+animation = &"look-around"
 autoplay = "look-around"
-frame_progress = 1.0
+
+[node name="heavy_blood" type="AnimatedSprite2D" parent="gui/panel/HBoxContainer/avatar" unique_id=2077336972]
+position = Vector2(24, 23.999996)
+scale = Vector2(0.14285712, 0.14285713)
+sprite_frames = SubResource("SpriteFrames_sbet0")
+animation = &"100"
+autoplay = "100"
+
+[node name="light_blood" type="AnimatedSprite2D" parent="gui/panel/HBoxContainer/avatar" unique_id=68503616]
+position = Vector2(23.999996, 23.999996)
+scale = Vector2(0.14285713, 0.14285713)
+sprite_frames = SubResource("SpriteFrames_e23it")
+animation = &"100"
+autoplay = "100"
 
 [node name="health" type="PanelContainer" parent="gui/panel/HBoxContainer" unique_id=1384828062]
 custom_minimum_size = Vector2(58, 0)

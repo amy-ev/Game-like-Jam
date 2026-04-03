@@ -132,7 +132,7 @@ texture = ExtResource("2_vpdu5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1020156019]
 sprite_frames = SubResource("SpriteFrames_8y6t8")
 autoplay = "default"
-frame_progress = 0.3339684
+frame_progress = 0.65638953
 centered = false
 
 [node name="Button" type="Button" parent="." unique_id=1893259982]

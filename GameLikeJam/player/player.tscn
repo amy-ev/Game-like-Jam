@@ -75,7 +75,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox" unique_id=1031591359]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58012015, -0.604939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58012015, -0.8012029)
 shape = SubResource("CylinderShape3D_qjkh3")
 debug_color = Color(0.93, 0.527, 0, 0.85490197)
 

@@ -6,6 +6,9 @@ extends CharacterBody3D
 @onready var gui:= $gui
 
 @onready var avatar:= $gui/gui/panel/HBoxContainer/avatar/avatar
+@onready var avatar_l_blood:= $gui/gui/panel/HBoxContainer/avatar/light_blood
+@onready var avatar_h_blood:= $gui/gui/panel/HBoxContainer/avatar/heavy_blood
+
 @onready var attack_sprite:= $"gui/attack-sprite"
 @onready var arm:= $gui/arm
 @onready var hitbox = $hitbox/CollisionShape3D
@@ -46,7 +49,7 @@ func _ready():
 	CAMERA_CONTROLLER.make_current()
 	initial_cam_pos = CAMERA_CONTROLLER.transform.origin
 	Global.start_pos = global_position
-
+	hitbox.disabled = true
 	healthChanged.emit(stats.health)
 
 func _physics_process(delta: float) -> void:
@@ -88,11 +91,22 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func play_attack_animations():
 	attack_sprite.play("scratch")
+	if stats.health <= 30:
+		avatar_h_blood.play("30_attack")
+		avatar_l_blood.play("100")
+	elif stats.health <= 50:
+		avatar_l_blood.play("50_attack")
+		avatar_h_blood.play("100")
 	arm.play("scratch")
 	avatar.play("attack")
 	await avatar.animation_finished
 	avatar.play("look-around")
-	
+	if stats.health <= 30:
+		avatar_h_blood.play("30")
+		avatar_l_blood.play("100")
+	elif stats.health <= 50:
+		avatar_l_blood.play("50")
+		avatar_h_blood.play("100")
 		
 func _update_camera(delta):
 	_mouse_rotation.x += _tilt_input * delta

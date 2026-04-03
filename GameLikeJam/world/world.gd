@@ -18,7 +18,6 @@ signal enemiesSpawned
 
 
 func _ready() -> void:
-
 	generate_path()
 	await mapGenerated
 	define_edges()
