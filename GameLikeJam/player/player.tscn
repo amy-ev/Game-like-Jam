@@ -90,6 +90,7 @@ debug_color = Color(0.8483788, 0.32783484, 0.48242027, 0.41960785)
 
 [connection signal="healthChanged" from="player_stats" to="gui" method="_on_player_stats_health_changed"]
 [connection signal="noHealth" from="player_stats" to="." method="_on_player_stats_no_health"]
+[connection signal="noHealth" from="player_stats" to="gui" method="_on_player_stats_no_health"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="hurtbox"]

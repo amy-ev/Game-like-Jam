@@ -13,11 +13,9 @@ signal maxHealthChanged
 		return health
 	set(value):
 		health = value
-		emit_signal("healthChanged")
-		print(health)
-
 		Global.health = health
-		print(Global.health)
+		emit_signal("healthChanged")
+
 		if health <= 0:
 			emit_signal("noHealth") 
 		if health >= max_health:

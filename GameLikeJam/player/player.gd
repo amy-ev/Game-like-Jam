@@ -3,11 +3,15 @@ extends CharacterBody3D
 @onready var CAMERA_CONTROLLER := $Camera3D
 @onready var LIGHT_CONTROLLER := $Camera3D/SpotLight3D
 
+@onready var gui:= $gui
+
 @onready var avatar:= $gui/gui/panel/HBoxContainer/avatar/avatar
 @onready var attack_sprite:= $"gui/attack-sprite"
 @onready var arm:= $gui/arm
 @onready var hitbox = $hitbox/CollisionShape3D
 @onready var stats = $player_stats
+
+@onready var you_died = preload("res://assets/dead_label.tscn")
 
 const SPEED = 7.0
 const TURN_SPEED = 0.05
@@ -128,8 +132,11 @@ func _headbob(time):
 
 
 func _on_player_stats_no_health() -> void:
-	if Global.lives != 0:
+	if Global.lives > 0:
 		Global.lives -= 1
 		global_position = Global.start_pos
+		gui.add_child(you_died.instantiate())
+		stats.health = stats.max_health
+		healthChanged.emit(stats.health)
 	else:
 		queue_free()
