@@ -94,6 +94,7 @@ debug_color = Color(0.8483788, 0.32783484, 0.48242027, 0.41960785)
 [node name="growl" type="AudioStreamPlayer3D" parent="." unique_id=1551980926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2624848, 0)
 stream = ExtResource("5_qjkh3")
+volume_db = -20.0
 
 [node name="chitter" type="AudioStreamPlayer3D" parent="." unique_id=1086019050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2624848, 0)

@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var hitbox = $hitbox
 @onready var collision_anim = $hitbox/collision_player
 @onready var growl = $growl
+@onready var spawn_prev = $spawn_prevention
 
 var player: CharacterBody3D = null
 enum{
@@ -228,3 +229,7 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 	growl.play()
 	sprite.play("bite")
 	collision_anim.play("bite")
+	
+func _on_spawn_prevention_body_entered(body: Node3D) -> void:
+	print(body)
+	queue_free()
