@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0sthxk2c7bu2"]
 
 [ext_resource type="Texture2D" uid="uid://bgw217m311s40" path="res://assets/baby-0.png" id="1_i3fxw"]
+[ext_resource type="AudioStream" uid="uid://c3amfdlh1gwef" path="res://assets/sound/baby_raccoon.mp3" id="2_co81w"]
 
 [sub_resource type="GDScript" id="GDScript_i3fxw"]
 script/source = "extends CharacterBody3D
@@ -70,6 +71,11 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34399414, 0)
 shape = SubResource("CylinderShape3D_yjn5r")
 debug_color = Color(0.9382292, 1.5690624e-05, 0.62672657, 0.41960785)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=829255692]
+stream = ExtResource("2_co81w")
+autoplay = true
+max_distance = 20.0
 
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]

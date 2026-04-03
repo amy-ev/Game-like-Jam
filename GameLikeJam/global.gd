@@ -7,7 +7,10 @@ var width = 4
 var height = 4
 
 var died:=false
-var raccoon_vision = false
+
+var raccoon_vision:= false
+var music:= true
+
 var player: CharacterBody3D = null
 var points: int
 

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmfj43nunkfh2" path="res://enemies/wander_controller.tscn" id="3_x6gnr"]
 [ext_resource type="PackedScene" uid="uid://d2k5n3dwwvmlt" path="res://enemies/fox_stats.tscn" id="4_po0vf"]
 [ext_resource type="PackedScene" uid="uid://6mw7wc6hqmhw" path="res://enemies/hurtbox.tscn" id="5_w1os4"]
+[ext_resource type="AudioStream" uid="uid://baanfj7jvxkji" path="res://assets/sound/fox_growl.mp3" id="6_x6gnr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7frlh"]
 atlas = ExtResource("2_w1os4")
@@ -269,6 +270,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("growl:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_x6gnr"]
 resource_name = "bite"
@@ -284,6 +297,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("growl:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-80.0, 0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_po0vf"]
@@ -356,6 +381,11 @@ debug_color = Color(0.9756195, 0, 0.32436496, 1)
 [node name="collision_player" type="AnimationPlayer" parent="hitbox" unique_id=1444136835]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_po0vf")
+
+[node name="growl" type="AudioStreamPlayer3D" parent="." unique_id=146128928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4025071, 0)
+stream = ExtResource("6_x6gnr")
+max_distance = 5.0
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

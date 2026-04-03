@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var stats = $fox_stats
 @onready var hitbox = $hitbox
 @onready var collision_anim = $hitbox/collision_player
-
+@onready var growl = $growl
 
 var player: CharacterBody3D = null
 enum{
@@ -145,7 +145,7 @@ func update_hitbox_direction():
 		return
 	if facing_direction.length_squared() <0.01:
 		return
-	var look_dir = global_position + (facing_direction*10.0)
+	var look_dir = hitbox.global_position + (facing_direction*10.0)
 		
 	look_dir.y = global_position.y
 	hitbox.look_at(look_dir, Vector3.UP)
@@ -225,5 +225,6 @@ func _on_sprite_animation_finished() -> void:
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	state = attack
+	growl.play()
 	sprite.play("bite")
 	collision_anim.play("bite")

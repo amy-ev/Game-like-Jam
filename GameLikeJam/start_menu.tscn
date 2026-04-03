@@ -10,11 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://bbsct5gddgtmq" path="res://assets/ui_background_pressed.png" id="5_gfl6h"]
 [ext_resource type="Texture2D" uid="uid://bkajrhv232bab" path="res://assets/vision_off.png" id="6_xsckg"]
 [ext_resource type="Texture2D" uid="uid://b4vf0uhtoi26g" path="res://assets/vision_on.png" id="7_gfl6h"]
+[ext_resource type="AudioStream" uid="uid://cwvm1q7twqdjf" path="res://assets/sound/baranova_n-nightingale-city-night-306707.mp3" id="11_gfl6h"]
 
 [sub_resource type="GDScript" id="GDScript_ndybt"]
 script/source = "extends CanvasLayer
 
 @onready var raccoon_vision = $raccoon_vision
+@onready var music = $music
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -39,6 +41,15 @@ func _on_raccoon_vision_toggled(toggled_on: bool) -> void:
 	else:
 		raccoon_vision.visible = false
 		Global.raccoon_vision = false
+
+
+func _on_mute_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		music.volume_db = -100
+		Global.music = false
+	else:
+		music.volume_db = 0
+		Global.music = true
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctwoq"]
@@ -217,5 +228,10 @@ texture_pressed = ExtResource("7_gfl6h")
 [node name="raccoon_vision" parent="." unique_id=1411555812 instance=ExtResource("5_ctwoq")]
 visible = false
 
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=343615995]
+stream = ExtResource("11_gfl6h")
+autoplay = true
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="HBoxContainer/mute" to="." method="_on_mute_toggled"]
 [connection signal="toggled" from="HBoxContainer/raccoon_vision" to="." method="_on_raccoon_vision_toggled"]

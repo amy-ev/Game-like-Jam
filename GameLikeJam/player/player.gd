@@ -14,6 +14,11 @@ extends CharacterBody3D
 @onready var hitbox = $hitbox/CollisionShape3D
 @onready var stats = $player_stats
 
+@onready var growl = $growl
+@onready var chitter = $chitter
+@onready var munch = $munch
+
+
 @onready var you_died = preload("res://assets/dead_label.tscn")
 
 const SPEED = 7.0
@@ -53,6 +58,7 @@ func _ready():
 	Global.start_pos = global_position
 	hitbox.disabled = true
 	healthChanged.emit(stats.health)
+	Global.connect("pointsCollected",_on_points_collected)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -96,7 +102,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func play_attack_animations():
 	is_attacking = true
 	hitbox.disabled = false
-	
+	growl.play(0)
 	attack_sprite.play("scratch")
 	if stats.health <= 30:
 		avatar_h_blood.play("30_attack")
@@ -173,3 +179,7 @@ func _on_player_stats_no_health() -> void:
 		healthChanged.emit(stats.health)
 	else:
 		get_tree().get_root().add_child(load("res://assets/transition.tscn").instantiate())
+
+
+func _on_points_collected(points):
+	chitter.play()

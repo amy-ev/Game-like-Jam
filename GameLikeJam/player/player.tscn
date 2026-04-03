@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c30nc57s6mgnu" path="res://gui.tscn" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://dpvjleqlibc7a" path="res://player/player_stats.gd" id="3_g1dw6"]
 [ext_resource type="PackedScene" uid="uid://6mw7wc6hqmhw" path="res://enemies/hurtbox.tscn" id="4_yw30f"]
+[ext_resource type="AudioStream" uid="uid://bakdx6sovutb" path="res://assets/sound/raccoon_growl.mp3" id="5_qjkh3"]
+[ext_resource type="AudioStream" uid="uid://di284t0p2ip60" path="res://assets/sound/raccoon_chitter.mp3" id="6_g6k8r"]
+[ext_resource type="AudioStream" uid="uid://bm0j8xtpsuta" path="res://assets/sound/munch.mp3" id="7_boad6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
 height = 1.5
@@ -87,6 +90,18 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63079834, 0)
 shape = SubResource("CylinderShape3D_yw30f")
 debug_color = Color(0.8483788, 0.32783484, 0.48242027, 0.41960785)
+
+[node name="growl" type="AudioStreamPlayer3D" parent="." unique_id=1551980926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2624848, 0)
+stream = ExtResource("5_qjkh3")
+
+[node name="chitter" type="AudioStreamPlayer3D" parent="." unique_id=1086019050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2624848, 0)
+stream = ExtResource("6_g6k8r")
+
+[node name="munch" type="AudioStreamPlayer3D" parent="." unique_id=765980820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2624848, 0)
+stream = ExtResource("7_boad6")
 
 [connection signal="healthChanged" from="player_stats" to="gui" method="_on_player_stats_health_changed"]
 [connection signal="noHealth" from="player_stats" to="." method="_on_player_stats_no_health"]

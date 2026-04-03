@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmel1m7ctt5n6" path="res://assets/raccoon-baby-1.png" id="2_mp22q"]
 [ext_resource type="Texture2D" uid="uid://cjc3x6tg6n8uq" path="res://assets/raccoon-baby-2.png" id="3_l5wpo"]
 [ext_resource type="PackedScene" uid="uid://qasul7tdg00p" path="res://shaders/shader-overlay.tscn" id="4_mp22q"]
+[ext_resource type="AudioStream" uid="uid://cybf65p76cu6h" path="res://assets/sound/baranova_n-birds-nightingale-city-2-308258.mp3" id="5_l5wpo"]
 
 [sub_resource type="GDScript" id="GDScript_mboir"]
 script/source = "extends CanvasLayer
@@ -12,8 +13,11 @@ const world = preload(\"res://world/world.tscn\")
 const menu = preload(\"res://start_menu.tscn\")
 @onready var anim_player = $anim_player
 @onready var raccoon_vision = $raccoon_vision
+@onready var music = $music
 
 func _ready() -> void:
+	if !Global.music:
+		music.volume_db = -100
 	if !Global.raccoon_vision:
 		remove_child(raccoon_vision)
 		
@@ -394,3 +398,8 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="raccoon_vision" parent="." unique_id=1411555812 instance=ExtResource("4_mp22q")]
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=1624637900]
+stream = ExtResource("5_l5wpo")
+volume_db = -10.0
+autoplay = true

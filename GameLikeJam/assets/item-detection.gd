@@ -22,7 +22,7 @@ func _on_body_entered(body: Node3D) -> void:
 					if stats.health < stats.max_health:
 						stats.health += 20
 						body.healthChanged.emit(stats.health)
-					
+					body.munch.play()
 					
 			collected = true
 			queue_free()
