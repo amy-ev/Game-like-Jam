@@ -3,9 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://hf4bhde7lvrg" path="res://assets/start-screen.png" id="2_vpdu5"]
 [ext_resource type="Texture2D" uid="uid://d2mhfq30f16rl" path="res://assets/title.png" id="3_v2mkm"]
 [ext_resource type="FontFile" uid="uid://cyltpnbsvujls" path="res://assets/font/8-bit-forensics.ttf" id="3_vpdu5"]
-[ext_resource type="Texture2D" uid="uid://dqu4fcfpflgkp" path="res://assets/food.png" id="4_v2mkm"]
+[ext_resource type="Texture2D" uid="uid://b3svpyersbsqv" path="res://assets/music_play.png" id="4_pgi0o"]
+[ext_resource type="Texture2D" uid="uid://ccb13g8vbjwqs" path="res://assets/ui_background.png" id="4_xsckg"]
+[ext_resource type="Texture2D" uid="uid://dfpso5f5ya6o8" path="res://assets/music_mute.png" id="5_73a2t"]
 [ext_resource type="PackedScene" uid="uid://qasul7tdg00p" path="res://shaders/shader-overlay.tscn" id="5_ctwoq"]
-[ext_resource type="Texture2D" uid="uid://dbjl2t8n614uk" path="res://assets/trash.png" id="5_ppfnh"]
+[ext_resource type="Texture2D" uid="uid://bbsct5gddgtmq" path="res://assets/ui_background_pressed.png" id="5_gfl6h"]
+[ext_resource type="Texture2D" uid="uid://bkajrhv232bab" path="res://assets/vision_off.png" id="6_xsckg"]
+[ext_resource type="Texture2D" uid="uid://b4vf0uhtoi26g" path="res://assets/vision_on.png" id="7_gfl6h"]
 
 [sub_resource type="GDScript" id="GDScript_ndybt"]
 script/source = "extends CanvasLayer
@@ -136,6 +140,27 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kefd2"]
+texture = ExtResource("4_xsckg")
+texture_margin_left = 2.0
+texture_margin_top = 4.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acoh7"]
+texture = ExtResource("5_gfl6h")
+texture_margin_left = 2.0
+texture_margin_top = 4.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xsckg"]
+texture = ExtResource("4_xsckg")
+texture_margin_left = 2.0
+texture_margin_top = 4.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+
 [node name="start-menu" type="CanvasLayer" unique_id=497046854]
 script = SubResource("GDScript_ndybt")
 
@@ -159,8 +184,14 @@ offset_left = 30.0
 offset_top = 30.0
 offset_right = 100.0
 offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.27058825, 0.24705882, 0.23529412, 1)
+theme_override_colors/font_pressed_color = Color(0.27058825, 0.24705882, 0.23529412, 1)
+theme_override_colors/font_hover_color = Color(0.42745098, 0.39215687, 0.37254903, 1)
 theme_override_fonts/font = ExtResource("3_vpdu5")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_kefd2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_acoh7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xsckg")
 text = "START"
 icon_alignment = 1
 
@@ -174,17 +205,17 @@ theme_override_constants/separation = 2
 [node name="mute" type="TextureButton" parent="HBoxContainer" unique_id=1116265657]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("4_v2mkm")
+texture_normal = ExtResource("4_pgi0o")
+texture_pressed = ExtResource("5_73a2t")
 
 [node name="raccoon_vision" type="TextureButton" parent="HBoxContainer" unique_id=23988270]
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("4_v2mkm")
-texture_pressed = ExtResource("5_ppfnh")
-texture_disabled = ExtResource("5_ppfnh")
-texture_focused = ExtResource("5_ppfnh")
+texture_normal = ExtResource("6_xsckg")
+texture_pressed = ExtResource("7_gfl6h")
 
 [node name="raccoon_vision" parent="." unique_id=1411555812 instance=ExtResource("5_ctwoq")]
+visible = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="toggled" from="HBoxContainer/raccoon_vision" to="." method="_on_raccoon_vision_toggled"]
