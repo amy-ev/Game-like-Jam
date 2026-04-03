@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c11eavala3rm5" path="res://assets/heavy_blood.png" id="6_axmix"]
 [ext_resource type="Texture2D" uid="uid://bvvkiu4aoqfa5" path="res://assets/light_blood.png" id="6_p8208"]
 [ext_resource type="Texture2D" uid="uid://d15hq2pefcohy" path="res://assets/arm.png" id="6_wll1r"]
+[ext_resource type="Texture2D" uid="uid://bgw217m311s40" path="res://assets/baby-0.png" id="8_e23it"]
+[ext_resource type="Texture2D" uid="uid://d085ekdsomwhh" path="res://assets/baby-1.png" id="9_hl6be"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl0n6"]
 content_margin_left = 2.0
@@ -444,13 +446,28 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_t4hft")
 
-[node name="Label" type="Label" parent="gui/panel/HBoxContainer/goal" unique_id=1806187093]
+[node name="HBoxContainer" type="HBoxContainer" parent="gui/panel/HBoxContainer/goal" unique_id=220436946]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.5647059, 0.54509807, 0.95686275)
-theme_override_fonts/font = ExtResource("3_67jta")
-text = "5"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="baby_1" type="TextureRect" parent="gui/panel/HBoxContainer/goal/HBoxContainer" unique_id=1223771093]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(26, 33)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_e23it")
+expand_mode = 1
+
+[node name="baby_2" type="TextureRect" parent="gui/panel/HBoxContainer/goal/HBoxContainer" unique_id=2124788850]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(26, 33)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_hl6be")
+expand_mode = 1
 
 [node name="border" type="NinePatchRect" parent="." unique_id=1478763870]
 layout_mode = 0
