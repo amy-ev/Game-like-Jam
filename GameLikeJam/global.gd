@@ -23,7 +23,7 @@ var start_pos:Vector3
 
 signal pointsCollected(point:int)
 
-@export var max_enemies = 5:
+@export var max_enemies = 6:
 	set = set_max_enemies
 @onready var enemy_number = 2:
 	get:
@@ -37,3 +37,9 @@ signal pointsCollected(point:int)
 			
 func set_max_enemies(value):
 	max_enemies = value
+	
+	
+func next_level():
+	set_max_enemies(max_enemies+2)
+	fox_damage += 5
+	fox_health += 10

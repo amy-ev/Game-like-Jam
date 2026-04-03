@@ -120,9 +120,16 @@ func _on_hurtbox_area_entered(area: Area3D) -> void:
 		if area.name == "hitbox":
 			var enemy = area.get_parent()
 			var enemy_name = str(enemy.name).rstrip("0123456789")
+			var direction = (global_position - enemy.global_position).normalized()
+			direction.y = 0
+			direction = direction.normalized()
+			velocity = direction * enemy.knockback
+
 			var damage_value = enemy.get_node(enemy_name + "_stats").damage
+
 			stats.health -= damage_value
 			healthChanged.emit(stats.health)
+			move_and_slide()
 
 func _headbob(time):
 	var pos = initial_cam_pos
@@ -132,11 +139,11 @@ func _headbob(time):
 
 
 func _on_player_stats_no_health() -> void:
+	Global.lives -= 1
 	if Global.lives > 0:
-		Global.lives -= 1
 		global_position = Global.start_pos
 		gui.add_child(you_died.instantiate())
 		stats.health = stats.max_health
 		healthChanged.emit(stats.health)
 	else:
-		queue_free()
+		get_tree().get_root().add_child(load("res://assets/transition.tscn").instantiate())

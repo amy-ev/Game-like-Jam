@@ -11,7 +11,6 @@ const world = preload(\"res://world/world.tscn\")
 
 func _start_game():
 	var tree = get_tree()
-	var current_scene = tree.get_current_scene()
 	var game = world.instantiate()
 	tree.get_root().add_child(game)
 "

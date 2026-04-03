@@ -20,6 +20,7 @@ enum{
 var acceleration = 10
 var speed = 5
 var friction = 200
+var knockback = 10
 
 var state = idle
 

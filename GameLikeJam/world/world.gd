@@ -257,7 +257,8 @@ func place_map(path, offsetX, offsetY):
 
 
 func enemy_inst(y,x):
-	for i in range(Global.enemy_number):
+	var enemy_num = randi_range(Global.enemy_number, Global.max_enemies)
+	for i in range(enemy_num):
 		var new_enemy = fox.instantiate()
 		add_child(new_enemy)
 		new_enemy.name = "fox"

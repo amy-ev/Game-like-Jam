@@ -21,6 +21,7 @@ func _input(event: InputEvent) -> void:
 			collected = true
 			visible=false
 			Global.level +=1
+			Global.next_level()
 			get_tree().get_root().add_child(load(\"res://assets/transition.tscn\").instantiate())
 			
 func _on_detection_body_entered(body: Node3D) -> void:

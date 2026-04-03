@@ -89,7 +89,7 @@ _data = {
 &"float": SubResource("Animation_8udjb")
 }
 
-[node name="firefly" type="CharacterBody3D" unique_id=1194372951]
+[node name="firefly" type="Node3D" unique_id=1593470202]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=450778360]
