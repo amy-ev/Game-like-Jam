@@ -8,16 +8,16 @@ var height = 4
 
 var raccoon_vision = false
 var player: CharacterBody3D = null
-var points = 0
+var points: int
 
-var level = 1
-var lives = 3
+var level: int
+var lives: int
 
 var health:int
-var player_max_health = 100
+var player_max_health:= 100
 
-var fox_damage:= 10
-var fox_health:= 40
+var fox_damage: int
+var fox_health: int
 
 var start_pos:Vector3
 
@@ -43,3 +43,12 @@ func next_level():
 	set_max_enemies(max_enemies+2)
 	fox_damage += 5
 	fox_health += 10
+
+func new_game():
+	fox_damage = 10
+	fox_health = 40
+	points = 0
+	level = 1
+	lives = 3
+	set_max_enemies(6)
+	

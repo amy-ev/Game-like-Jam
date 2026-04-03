@@ -3,6 +3,16 @@
 [ext_resource type="Script" uid="uid://d34vueb1iqceo" path="res://world/world.gd" id="1_6xmxd"]
 [ext_resource type="PackedScene" uid="uid://qasul7tdg00p" path="res://shaders/shader-overlay.tscn" id="1_tcf2h"]
 
+[sub_resource type="GDScript" id="GDScript_tcf2h"]
+script/source = "extends Node
+
+@onready var raccoon_vision = $raccoon_vision
+
+func _ready() -> void:
+	if !Global.raccoon_vision:
+		remove_child(raccoon_vision)
+"
+
 [sub_resource type="Environment" id="Environment_tlwt5"]
 ambient_light_color = Color(0.011764706, 0.03137255, 0.05882353, 1)
 fog_enabled = true
@@ -15,6 +25,7 @@ fog_depth_begin = 0.0
 fog_depth_end = 4000.0
 
 [node name="game" type="Node" unique_id=1547359352]
+script = SubResource("GDScript_tcf2h")
 
 [node name="world" type="Node3D" parent="." unique_id=1011780645]
 script = ExtResource("1_6xmxd")
@@ -31,4 +42,4 @@ shadow_enabled = true
 
 [node name="rooms" type="Node3D" parent="world" unique_id=1089986812]
 
-[node name="MeshInstance2D" parent="." unique_id=1411555812 instance=ExtResource("1_tcf2h")]
+[node name="raccoon_vision" parent="." unique_id=1411555812 instance=ExtResource("1_tcf2h")]

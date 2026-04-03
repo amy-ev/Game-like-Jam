@@ -3,11 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://6lq02naqbitp" path="res://assets/animation-raccoon.png" id="1_ljyfo"]
 [ext_resource type="Texture2D" uid="uid://cmel1m7ctt5n6" path="res://assets/raccoon-baby-1.png" id="2_ij1m1"]
 [ext_resource type="Texture2D" uid="uid://cjc3x6tg6n8uq" path="res://assets/raccoon-baby-2.png" id="3_4b1b3"]
+[ext_resource type="PackedScene" uid="uid://qasul7tdg00p" path="res://shaders/shader-overlay.tscn" id="4_ij1m1"]
 
 [sub_resource type="GDScript" id="GDScript_ljyfo"]
 script/source = "extends CanvasLayer
 
 const world = preload(\"res://world/world.tscn\")
+@onready var raccoon_vision = $raccoon_vision
+
+func _ready() -> void:
+	if !Global.raccoon_vision:
+		remove_child(raccoon_vision)
 
 func _start_game():
 	var tree = get_tree()
@@ -130,3 +136,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="raccoon_vision" parent="." unique_id=1411555812 instance=ExtResource("4_ij1m1")]

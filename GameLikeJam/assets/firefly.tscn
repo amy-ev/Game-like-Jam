@@ -101,8 +101,11 @@ texture = ExtResource("1_5n5vt")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2124437807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36500418, 0)
-light_color = Color(0.8041459, 0.5817348, 0.04853452, 1)
-light_indirect_energy = 2.0
+light_color = Color(1, 0.718, 0.060000002, 1)
+light_energy = 2.0
+light_indirect_energy = 4.0
+light_volumetric_fog_energy = 2.0
+omni_range = 6.0
 
 [node name="Sprite3D2" type="Sprite3D" parent="." unique_id=923213700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45963466, -0.10211745)

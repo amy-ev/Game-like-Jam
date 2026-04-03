@@ -7,7 +7,7 @@ shader = ExtResource("1_pdanu")
 shader_parameter/mode = 0
 shader_parameter/intensity = 1.0
 
-[node name="MeshInstance2D" type="CanvasLayer" unique_id=1411555812]
+[node name="raccoon_vision" type="CanvasLayer" unique_id=1411555812]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=789139645]
 material = SubResource("ShaderMaterial_y5svd")

@@ -3,9 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://hf4bhde7lvrg" path="res://assets/start-screen.png" id="2_vpdu5"]
 [ext_resource type="Texture2D" uid="uid://d2mhfq30f16rl" path="res://assets/title.png" id="3_v2mkm"]
 [ext_resource type="FontFile" uid="uid://cyltpnbsvujls" path="res://assets/font/8-bit-forensics.ttf" id="3_vpdu5"]
+[ext_resource type="Texture2D" uid="uid://dqu4fcfpflgkp" path="res://assets/food.png" id="4_v2mkm"]
+[ext_resource type="PackedScene" uid="uid://qasul7tdg00p" path="res://shaders/shader-overlay.tscn" id="5_ctwoq"]
+[ext_resource type="Texture2D" uid="uid://dbjl2t8n614uk" path="res://assets/trash.png" id="5_ppfnh"]
 
 [sub_resource type="GDScript" id="GDScript_ndybt"]
 script/source = "extends CanvasLayer
+
+@onready var raccoon_vision = $raccoon_vision
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -14,9 +19,22 @@ func _ready() -> void:
 		print(\"got it\")
 		var anim = root.get_node(\"/root/transition\")
 		root.remove_child(anim)
+	raccoon_vision.visible = false
+
 
 func _on_button_pressed() -> void:
+	Global.new_game()
 	get_tree().change_scene_to_file(\"res://animation.tscn\")
+
+
+func _on_raccoon_vision_toggled(toggled_on: bool) -> void:
+	print(toggled_on)
+	if toggled_on == true:
+		raccoon_vision.visible = true
+		Global.raccoon_vision = true
+	else:
+		raccoon_vision.visible = false
+		Global.raccoon_vision = false
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctwoq"]
@@ -132,7 +150,8 @@ texture = ExtResource("2_vpdu5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1020156019]
 sprite_frames = SubResource("SpriteFrames_8y6t8")
 autoplay = "default"
-frame_progress = 0.65638953
+frame = 11
+frame_progress = 0.062763505
 centered = false
 
 [node name="Button" type="Button" parent="." unique_id=1893259982]
@@ -145,4 +164,27 @@ theme_override_font_sizes/font_size = 16
 text = "START"
 icon_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1398685240]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 37.0
+offset_bottom = 19.0
+theme_override_constants/separation = 2
+
+[node name="mute" type="TextureButton" parent="HBoxContainer" unique_id=1116265657]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_v2mkm")
+
+[node name="raccoon_vision" type="TextureButton" parent="HBoxContainer" unique_id=23988270]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_v2mkm")
+texture_pressed = ExtResource("5_ppfnh")
+texture_disabled = ExtResource("5_ppfnh")
+texture_focused = ExtResource("5_ppfnh")
+
+[node name="raccoon_vision" parent="." unique_id=1411555812 instance=ExtResource("5_ctwoq")]
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="HBoxContainer/raccoon_vision" to="." method="_on_raccoon_vision_toggled"]
