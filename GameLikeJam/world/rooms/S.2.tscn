@@ -220,4 +220,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.82484, 0, -22.902775)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.116943, 0, -0.7253418)
 
 [node name="player" parent="." unique_id=1163194258 instance=ExtResource("6_mlact")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7176704, 0.25031465, 11.237638)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.35779, 0.25031465, 14.790432)

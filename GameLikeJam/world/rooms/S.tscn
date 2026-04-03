@@ -113,6 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.810735)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.437256)
 
 [node name="player" parent="." unique_id=1163194258 instance=ExtResource("8_kkvqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25031465, 3.2021255)
 
 [node name="foliage" type="Node3D" parent="." unique_id=49028859]
 
