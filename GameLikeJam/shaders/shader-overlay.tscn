@@ -4,8 +4,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y5svd"]
 shader = ExtResource("1_pdanu")
-shader_parameter/mode = 0
-shader_parameter/intensity = 1.0
+shader_parameter/color_deficiency_type = 2
 
 [node name="raccoon_vision" type="CanvasLayer" unique_id=1411555812]
 
